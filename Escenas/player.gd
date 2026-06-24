@@ -1,25 +1,42 @@
 extends CharacterBody2D
 
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+var gravity_scale = 2
+var speed = 500
+var jump_force = -1000
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	var input_axis = Input.get_axis("left", "right")
+	apply_gravity(delta)
+	movement(input_axis, delta)
+	jump()
+	air_movement(input_axis, delta)
 	move_and_slide()
+
+func apply_gravity(delta):
+	if not is_on_floor():
+		velocity += get_gravity() * gravity_scale * delta
+
+func movement(input_axis, delta):
+	if not is_on_floor():
+		return
+	if input_axis != 0:
+		velocity.x = input_axis * speed
+	else:
+		velocity.x = 0
+
+func jump():
+	if is_on_floor():
+		if Input.is_action_just_pressed("jump"):
+			velocity.y = jump_force
+			
+	elif not is_on_floor():
+		if Input.is_action_just_released("jump") and velocity.y < jump_force / 2:
+			velocity.y = jump_force / 2
+
+func air_movement(input_axis, delta):
+	if is_on_floor():
+		return
+	if input_axis !=0:
+		velocity.x = input_axis * speed
+	else:
+		velocity.x = 0
