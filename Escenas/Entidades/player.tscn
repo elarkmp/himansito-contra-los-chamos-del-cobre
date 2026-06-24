@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://itdox6wpac0t" path="res://scripts/player.gd" id="1_i8vih"]
 [ext_resource type="Texture2D" uid="uid://d0xefs75cpwrh" path="res://sprites/player/Sprite-0001.png" id="2_i8vih"]
+[ext_resource type="Script" uid="uid://7vbwki6cpjsg" path="res://scripts/GestorVida.gd" id="3_5pnmu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i8vih"]
 radius = 32.06244
@@ -71,3 +72,6 @@ autoplay = "Idle"
 [node name="Coyotetime" type="Timer" parent="." unique_id=719879834]
 wait_time = 0.15
 one_shot = true
+
+[node name="GestorVidaComponent" type="Node" parent="." unique_id=330906111]
+script = ExtResource("3_5pnmu")

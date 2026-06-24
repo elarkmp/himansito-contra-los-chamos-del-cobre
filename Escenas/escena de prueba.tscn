@@ -1,12 +1,34 @@
 [gd_scene format=3 uid="uid://bjportdmbstp5"]
 
 [ext_resource type="Texture2D" uid="uid://r4ry57pves76" path="res://icon.svg" id="1_5kpxy"]
-[ext_resource type="PackedScene" uid="uid://bbbepnweygx8a" path="res://Escenas/player.tscn" id="2_ur31k"]
+[ext_resource type="Script" uid="uid://cxw6kae8nflob" path="res://scripts/GestorDamage.gd" id="1_45qh3"]
+[ext_resource type="PackedScene" uid="uid://bbbepnweygx8a" path="res://Escenas/Entidades/player.tscn" id="2_ur31k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkljt"]
+size = Vector2(1181.8184, 123.58493)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qevjs"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga66r"]
 size = Vector2(1239, 118)
 
 [node name="Node2D" type="Node2D" unique_id=1776065144]
+
+[node name="CajaMalaMalisima" type="Area2D" parent="." unique_id=1643784283]
+position = Vector2(1012.55, 452.265)
+scale = Vector2(0.165, 1.06)
+script = ExtResource("1_45qh3")
+damage = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CajaMalaMalisima" unique_id=616339264]
+position = Vector2(23.938965, -5.43869)
+shape = SubResource("RectangleShape2D_kkljt")
+
+[node name="Sprite2D" type="Sprite2D" parent="CajaMalaMalisima" unique_id=1287395106]
+position = Vector2(10.272949, -3)
+scale = Vector2(9.734375, 1)
+texture = SubResource("CompressedTexture2D_qevjs")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=282525288]
 position = Vector2(23, 608)
@@ -80,3 +102,5 @@ position = Vector2(0, -88)
 zoom = Vector2(0.9, 0.9)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
+
+[connection signal="body_entered" from="CajaMalaMalisima" to="CajaMalaMalisima" method="_on_body_entered"]
