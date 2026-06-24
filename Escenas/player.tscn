@@ -1,19 +1,59 @@
 [gd_scene format=3 uid="uid://bbbepnweygx8a"]
 
-[ext_resource type="Texture2D" uid="uid://r4ry57pves76" path="res://icon.svg" id="1_cnkc8"]
-[ext_resource type="Script" uid="uid://itdox6wpac0t" path="res://Escenas/player.gd" id="1_i8vih"]
+[ext_resource type="Script" uid="uid://itdox6wpac0t" path="res://scripts/player.gd" id="1_i8vih"]
+[ext_resource type="Texture2D" uid="uid://d0xefs75cpwrh" path="res://sprites/player/Sprite-0001.png" id="2_i8vih"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga66r"]
-size = Vector2(126, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_i8vih"]
+radius = 32.06244
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgqwx"]
+atlas = ExtResource("2_i8vih")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6njrx"]
+atlas = ExtResource("2_i8vih")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgfde"]
+atlas = ExtResource("2_i8vih")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlwfv"]
+atlas = ExtResource("2_i8vih")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ga66r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_cnkc8")
+"texture": SubResource("AtlasTexture_qgqwx")
 }],
 "loop": 1,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6njrx")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgfde")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlwfv")
+}],
+"loop": 1,
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -21,8 +61,13 @@ animations = [{
 script = ExtResource("1_i8vih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1525362219]
-shape = SubResource("RectangleShape2D_ga66r")
+shape = SubResource("CircleShape2D_i8vih")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605574474]
 sprite_frames = SubResource("SpriteFrames_ga66r")
 animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Coyotetime" type="Timer" parent="." unique_id=719879834]
+wait_time = 0.15
+one_shot = true
