@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c0pk8h0b465p7"]
+
+[ext_resource type="Script" uid="uid://gws3dlw22lvq" path="res://scripts/GunBase.gd" id="1_7douw"]
+
+[node name="arma_base" type="Node2D" unique_id=784418745]
+script = ExtResource("1_7douw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1417267221]
+scale = Vector2(2, 2)
+offset = Vector2(20, 0)

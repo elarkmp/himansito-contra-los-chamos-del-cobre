@@ -2,16 +2,20 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyotetime: Timer = $Coyotetime
+@onready var arma: GunBase = $pistola
 
-var gravity_scale = 2
+var gravity_scale = 3
 var speed = 500
 var jump_force = -1000
 
+
+## lógica
 func _physics_process(delta: float) -> void:
 	var input_axis = Input.get_axis("left", "right")
 	apply_gravity(delta)
 	movement(input_axis, delta)
 	jump()
+	weapon(input_axis)
 	air_movement(input_axis, delta)
 	update_animations(input_axis)
 	var was_on_floor = is_on_floor()
@@ -42,6 +46,12 @@ func jump():
 		if Input.is_action_just_released("jump") and velocity.y < jump_force / 2:
 			velocity.y = jump_force / 2
 
+func weapon(input_axis):
+	if Input.is_action_just_pressed("shoot"):
+		arma.shoot()
+	if input_axis != 0:
+		arma.direction = arma.directionGun.left if input_axis < 0 else arma.directionGun.right
+
 func air_movement(input_axis, delta):
 	if is_on_floor():
 		return
@@ -50,10 +60,17 @@ func air_movement(input_axis, delta):
 	else:
 		velocity.x = 0
 		
+		
+
+## visuales
 func update_animations(input_axis):
 	if input_axis !=0:
 		animated_sprite_2d.flip_h = (input_axis < 0)
 		animated_sprite_2d.play("run")
+		
+		##flipear el arma asi todo incrustado
+		arma.scale.x = -1 if input_axis < 0 else 1
+		
 	else:
 		animated_sprite_2d.play("Idle")
 	

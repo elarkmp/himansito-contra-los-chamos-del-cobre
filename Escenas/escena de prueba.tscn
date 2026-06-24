@@ -15,81 +15,88 @@ size = Vector2(1239, 118)
 
 [node name="Node2D" type="Node2D" unique_id=1776065144]
 
-[node name="CajaMalaMalisima" type="Area2D" parent="." unique_id=1643784283]
-position = Vector2(1012.55, 452.265)
+[node name="cajas" type="Node" parent="." unique_id=1303831820]
+
+[node name="CajaMalaMalisima" type="Area2D" parent="cajas" unique_id=1643784283]
+position = Vector2(808, 541)
 scale = Vector2(0.165, 1.06)
 script = ExtResource("1_45qh3")
-damage = 10
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CajaMalaMalisima" unique_id=616339264]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/CajaMalaMalisima" unique_id=616339264]
 position = Vector2(23.938965, -5.43869)
 shape = SubResource("RectangleShape2D_kkljt")
 
-[node name="Sprite2D" type="Sprite2D" parent="CajaMalaMalisima" unique_id=1287395106]
+[node name="Sprite2D" type="Sprite2D" parent="cajas/CajaMalaMalisima" unique_id=1287395106]
 position = Vector2(10.272949, -3)
 scale = Vector2(9.734375, 1)
 texture = SubResource("CompressedTexture2D_qevjs")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=282525288]
+[node name="StaticBody2D" type="StaticBody2D" parent="cajas" unique_id=282525288]
 position = Vector2(23, 608)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1916437543]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D" unique_id=1916437543]
 position = Vector2(559.5, 0)
 shape = SubResource("RectangleShape2D_ga66r")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=213464439]
+[node name="Sprite2D" type="Sprite2D" parent="cajas/StaticBody2D" unique_id=213464439]
 position = Vector2(559, 0)
 scale = Vector2(9.734375, 1)
 texture = ExtResource("1_5kpxy")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=2005443832]
-position = Vector2(565, 293.99997)
+[node name="StaticBody2D2" type="StaticBody2D" parent="cajas" unique_id=2005443832]
+position = Vector2(695, 387)
 scale = Vector2(0.31, 0.675)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1100779888]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D2" unique_id=1100779888]
 position = Vector2(559.5, 0)
 shape = SubResource("RectangleShape2D_ga66r")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1516205036]
+[node name="Sprite2D" type="Sprite2D" parent="cajas/StaticBody2D2" unique_id=1516205036]
 position = Vector2(559, 0)
 scale = Vector2(9.734375, 1)
 texture = ExtResource("1_5kpxy")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1693401154]
-position = Vector2(-91, 338.99997)
+[node name="StaticBody2D3" type="StaticBody2D" parent="cajas" unique_id=1693401154]
+position = Vector2(51, 443.99994)
 scale = Vector2(0.31, 0.675)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=663419995]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D3" unique_id=663419995]
 position = Vector2(559.5, 0)
 shape = SubResource("RectangleShape2D_ga66r")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=97836657]
+[node name="Sprite2D" type="Sprite2D" parent="cajas/StaticBody2D3" unique_id=97836657]
 position = Vector2(559, 0)
 scale = Vector2(9.734375, 1)
 texture = ExtResource("1_5kpxy")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1434782570]
-position = Vector2(936, 60)
+[node name="StaticBody2D4" type="StaticBody2D" parent="cajas" unique_id=1434782570]
+position = Vector2(862, 342)
 scale = Vector2(0.025, 0.675)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=869533802]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D4" unique_id=869533802]
 position = Vector2(559.5, 0)
 shape = SubResource("RectangleShape2D_ga66r")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=1803246775]
+[node name="Sprite2D" type="Sprite2D" parent="cajas/StaticBody2D4" unique_id=1803246775]
 position = Vector2(559, 0)
 scale = Vector2(9.734375, 1)
 texture = ExtResource("1_5kpxy")
 
-[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=376633659]
-position = Vector2(612, -161)
+[node name="StaticBody2D5" type="StaticBody2D" parent="cajas" unique_id=376633659]
+position = Vector2(973, 283)
 scale = Vector2(0.025, 0.675)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=333376237]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D5" unique_id=333376237]
 position = Vector2(559.5, 0)
 shape = SubResource("RectangleShape2D_ga66r")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5" unique_id=1873412372]
+[node name="Sprite2D" type="Sprite2D" parent="cajas/StaticBody2D5" unique_id=1873412372]
 position = Vector2(559, 0)
 scale = Vector2(9.734375, 1)
 texture = ExtResource("1_5kpxy")
@@ -103,4 +110,4 @@ zoom = Vector2(0.9, 0.9)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
-[connection signal="body_entered" from="CajaMalaMalisima" to="CajaMalaMalisima" method="_on_body_entered"]
+[connection signal="body_entered" from="cajas/CajaMalaMalisima" to="cajas/CajaMalaMalisima" method="_on_body_entered"]

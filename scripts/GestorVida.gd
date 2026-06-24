@@ -5,8 +5,9 @@ extends Node
 
 func DamageEntity(damage: int):
 	vida -= damage;
+	print("vida restante " + str(vida))
 	
-	if (vida <= 0):  
+	if (vida <= 0): 
 		muerto = true;
 		print("Morido Fokin Asi muelto");
 		
