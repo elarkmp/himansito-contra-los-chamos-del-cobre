@@ -11,7 +11,7 @@ size = Vector2(1181.8184, 123.58493)
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga66r"]
-size = Vector2(1239, 118)
+size = Vector2(1239, 129.63887)
 
 [node name="Node2D" type="Node2D" unique_id=1776065144]
 
@@ -34,10 +34,11 @@ texture = SubResource("CompressedTexture2D_qevjs")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="cajas" unique_id=282525288]
 position = Vector2(23, 608)
+scale = Vector2(7.145, 1)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D" unique_id=1916437543]
-position = Vector2(559.5, 0)
+position = Vector2(559.5, -1.180542)
 shape = SubResource("RectangleShape2D_ga66r")
 
 [node name="Sprite2D" type="Sprite2D" parent="cajas/StaticBody2D" unique_id=213464439]
@@ -51,7 +52,8 @@ scale = Vector2(0.31, 0.675)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D2" unique_id=1100779888]
-position = Vector2(559.5, 0)
+position = Vector2(559.5, -1.5464478)
+scale = Vector2(1, 1.0000001)
 shape = SubResource("RectangleShape2D_ga66r")
 
 [node name="Sprite2D" type="Sprite2D" parent="cajas/StaticBody2D2" unique_id=1516205036]
@@ -65,7 +67,8 @@ scale = Vector2(0.31, 0.675)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D3" unique_id=663419995]
-position = Vector2(559.5, 0)
+position = Vector2(559.5001, -3.0925293)
+scale = Vector2(1, 1.0000001)
 shape = SubResource("RectangleShape2D_ga66r")
 
 [node name="Sprite2D" type="Sprite2D" parent="cajas/StaticBody2D3" unique_id=97836657]
@@ -102,12 +105,14 @@ scale = Vector2(9.734375, 1)
 texture = ExtResource("1_5kpxy")
 
 [node name="player" parent="." unique_id=735416826 instance=ExtResource("2_ur31k")]
-position = Vector2(587, 411)
+position = Vector2(550, -2097)
+scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=735929928]
-position = Vector2(0, -88)
+position = Vector2(0, -44)
+scale = Vector2(0.5, 0.5)
 zoom = Vector2(0.9, 0.9)
 position_smoothing_enabled = true
-position_smoothing_speed = 8.0
+position_smoothing_speed = 10.0
 
 [connection signal="body_entered" from="cajas/CajaMalaMalisima" to="cajas/CajaMalaMalisima" method="_on_body_entered"]

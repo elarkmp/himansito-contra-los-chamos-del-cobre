@@ -39,6 +39,7 @@ func movement(input_axis, delta):
 func jump():
 	if is_on_floor() or coyotetime.time_left > 0:
 		if Input.is_action_just_pressed("jump"):
+			#jump_anim()
 			velocity.y = jump_force
 			coyotetime.stop()
 			
@@ -82,6 +83,11 @@ func update_animations(input_axis):
 			animated_sprite_2d.play("fall")
 		else:
 			animated_sprite_2d.play("jump")
-	
+
+##estiramiento al saltar
+#func jump_anim():
+	#var tween = create_tween()
+	#tween.tween_property(animated_sprite_2d, "scale", Vector2(0.8, 1.2), 0.25)
+	#tween.tween_property(animated_sprite_2d, "scale", Vector2(1.0, 1.0), 0.1)
 	
 	
