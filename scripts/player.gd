@@ -7,6 +7,7 @@ extends CharacterBody2D
 var gravity_scale = 3
 var speed = 500
 var jump_force = -1000
+var lastDirection: GunBase.directionGun = arma.directionGun.right
 
 
 ## lógica
@@ -16,6 +17,7 @@ func _physics_process(delta: float) -> void:
 	movement(input_axis, delta)
 	jump()
 	weapon(input_axis)
+	animWeapon(input_axis)
 	air_movement(input_axis, delta)
 	update_animations(input_axis)
 	var was_on_floor = is_on_floor()
@@ -39,7 +41,7 @@ func movement(input_axis, delta):
 func jump():
 	if is_on_floor() or coyotetime.time_left > 0:
 		if Input.is_action_just_pressed("jump"):
-			#jump_anim()
+			jump_anim()
 			velocity.y = jump_force
 			coyotetime.stop()
 			
@@ -47,11 +49,35 @@ func jump():
 		if Input.is_action_just_released("jump") and velocity.y < jump_force / 2:
 			velocity.y = jump_force / 2
 
-func weapon(input_axis):
+func weapon(input_axis: float):
+	## disparar
 	if Input.is_action_just_pressed("shoot"):
 		arma.shoot()
+	
+	## cambiar direccion del arma
 	if input_axis != 0:
-		arma.direction = arma.directionGun.left if input_axis < 0 else arma.directionGun.right
+		lastDirection = arma.directionGun.left if input_axis < 0 else arma.directionGun.right
+	if Input.is_action_pressed("up"):
+		arma.direction = arma.directionGun.up
+	elif Input.is_action_pressed("down"):
+		arma.direction = arma.directionGun.down
+	else:
+		arma.direction = lastDirection
+
+## animacion del arma
+func animWeapon(input_axis: float):
+	if input_axis != 0:
+		arma.scale.x = -1 if input_axis < 0 else 1
+		
+	var angle: float = 0.0
+	match arma.direction:
+		arma.directionGun.up: ## arriba
+			angle = -90
+		arma.directionGun.down: ## abajo
+			angle = 90
+		_: ## default
+			angle = 0
+	arma.rotation_degrees = angle * arma.scale.x ## rotar
 
 func air_movement(input_axis, delta):
 	if is_on_floor():
@@ -60,8 +86,6 @@ func air_movement(input_axis, delta):
 		velocity.x = input_axis * speed
 	else:
 		velocity.x = 0
-		
-		
 
 ## visuales
 func update_animations(input_axis):
@@ -70,7 +94,7 @@ func update_animations(input_axis):
 		animated_sprite_2d.play("run")
 		
 		##flipear el arma asi todo incrustado
-		arma.scale.x = -1 if input_axis < 0 else 1
+		
 		
 	else:
 		animated_sprite_2d.play("Idle")
@@ -85,9 +109,8 @@ func update_animations(input_axis):
 			animated_sprite_2d.play("jump")
 
 ##estiramiento al saltar
-#func jump_anim():
-	#var tween = create_tween()
-	#tween.tween_property(animated_sprite_2d, "scale", Vector2(0.8, 1.2), 0.25)
-	#tween.tween_property(animated_sprite_2d, "scale", Vector2(1.0, 1.0), 0.1)
-	
+func jump_anim():
+	var tween = create_tween()
+	tween.tween_property(animated_sprite_2d, "scale", Vector2(0.8, 1.2), 0.1 / 2)
+	tween.tween_property(animated_sprite_2d, "scale", Vector2(1.0, 1.0), 0.1 / 2)
 	

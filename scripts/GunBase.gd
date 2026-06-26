@@ -10,7 +10,7 @@ var _canShoot: bool = true
 var _cooldown: float = 0.0
 
 ## direcciones
-enum directionGun { right, left }
+enum directionGun { right, left, up, down }
 var direction: directionGun = directionGun.right
 
 func _ready() -> void:
