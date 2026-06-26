@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b1s4sotjhpd5f"]
+
+[ext_resource type="Script" uid="uid://7vbwki6cpjsg" path="res://scripts/GestorVida.gd" id="1_ulerk"]
+
+[node name="GestorVidaComponent" type="Node" unique_id=673144079]
+script = ExtResource("1_ulerk")

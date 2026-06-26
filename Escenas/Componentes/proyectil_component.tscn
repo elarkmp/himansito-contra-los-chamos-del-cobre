@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://btd6vkxughnd0"]
+
+[ext_resource type="Script" uid="uid://didkw5psus5ea" path="res://scripts/Proyectil.gd" id="1_qdmoe"]
+[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="2_1vjgu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16rwx"]
+size = Vector2(59, 44)
+
+[node name="Proyectil" type="RigidBody2D" unique_id=1635148290]
+mass = 0.001
+gravity_scale = 0.0
+script = ExtResource("1_qdmoe")
+fuerza = 50.0
+direccion = Vector2(1, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=264367651]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_16rwx")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=687232983]
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("2_1vjgu")
+metadata/_edit_group_ = true

@@ -1,14 +1,12 @@
 [gd_scene format=3 uid="uid://bjportdmbstp5"]
 
 [ext_resource type="Texture2D" uid="uid://r4ry57pves76" path="res://icon.svg" id="1_5kpxy"]
-[ext_resource type="Script" uid="uid://cxw6kae8nflob" path="res://scripts/GestorDamage.gd" id="1_45qh3"]
+[ext_resource type="PackedScene" uid="uid://btd6vkxughnd0" path="res://Escenas/Componentes/proyectil_component.tscn" id="1_qevjs"]
+[ext_resource type="PackedScene" uid="uid://b1s4sotjhpd5f" path="res://Escenas/Componentes/gestor_vida_component.tscn" id="2_28s81"]
 [ext_resource type="PackedScene" uid="uid://bbbepnweygx8a" path="res://Escenas/Entidades/player.tscn" id="2_ur31k"]
+[ext_resource type="PackedScene" uid="uid://2xv87iorg63g" path="res://Escenas/Componentes/damage_component.tscn" id="2_vd7g1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkljt"]
-size = Vector2(1181.8184, 123.58493)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qevjs"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[sub_resource type="CircleShape2D" id="CircleShape2D_kkljt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga66r"]
 size = Vector2(1239, 129.63887)
@@ -17,20 +15,33 @@ size = Vector2(1239, 129.63887)
 
 [node name="cajas" type="Node" parent="." unique_id=1303831820]
 
-[node name="CajaMalaMalisima" type="Area2D" parent="cajas" unique_id=1643784283]
-position = Vector2(808, 541)
-scale = Vector2(0.165, 1.06)
-script = ExtResource("1_45qh3")
+[node name="Proyectil" parent="cajas" unique_id=1635148290 instance=ExtResource("1_qevjs")]
+position = Vector2(959, 485)
+enTesteo = true
+
+[node name="DamageComponent" parent="cajas/Proyectil" unique_id=1534548471 instance=ExtResource("2_vd7g1")]
+damage = 10
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="cajas/Proyectil/DamageComponent" unique_id=1253914261]
+shape = SubResource("CircleShape2D_kkljt")
+
+[node name="CajaPruebas" type="StaticBody2D" parent="cajas" unique_id=272344591]
+position = Vector2(1294, 470)
+scale = Vector2(0.0961, 0.45562503)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/CajaMalaMalisima" unique_id=616339264]
-position = Vector2(23.938965, -5.43869)
-shape = SubResource("RectangleShape2D_kkljt")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/CajaPruebas" unique_id=1710939582]
+position = Vector2(559.5001, -3.0925293)
+scale = Vector2(1, 1.0000001)
+shape = SubResource("RectangleShape2D_ga66r")
 
-[node name="Sprite2D" type="Sprite2D" parent="cajas/CajaMalaMalisima" unique_id=1287395106]
-position = Vector2(10.272949, -3)
+[node name="GestorVidaComponent" parent="cajas/CajaPruebas" unique_id=673144079 node_paths=PackedStringArray("NodoPadre") instance=ExtResource("2_28s81")]
+NodoPadre = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="cajas/CajaPruebas" unique_id=992458516]
+position = Vector2(559, 0)
 scale = Vector2(9.734375, 1)
-texture = SubResource("CompressedTexture2D_qevjs")
+texture = ExtResource("1_5kpxy")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="cajas" unique_id=282525288]
 position = Vector2(23, 608)
@@ -115,5 +126,3 @@ scale = Vector2(0.5, 0.5)
 zoom = Vector2(0.9, 0.9)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
-
-[connection signal="body_entered" from="cajas/CajaMalaMalisima" to="cajas/CajaMalaMalisima" method="_on_body_entered"]

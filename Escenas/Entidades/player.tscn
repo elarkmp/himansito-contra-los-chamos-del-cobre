@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://itdox6wpac0t" path="res://scripts/player.gd" id="1_i8vih"]
 [ext_resource type="Texture2D" uid="uid://kq5c3wled4in" path="res://sprites/player/FG-Himansito.png" id="2_5t8ew"]
-[ext_resource type="Script" uid="uid://7vbwki6cpjsg" path="res://scripts/GestorVida.gd" id="3_5pnmu"]
+[ext_resource type="PackedScene" uid="uid://b1s4sotjhpd5f" path="res://Escenas/Componentes/gestor_vida_component.tscn" id="3_5t8ew"]
 [ext_resource type="PackedScene" uid="uid://dyi02icn8k826" path="res://Escenas/armas/pistola.tscn" id="4_5t8ew"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2fydp"]
@@ -211,7 +211,7 @@ speed_scale = 2.0
 wait_time = 0.15
 one_shot = true
 
-[node name="GestorVidaComponent" type="Node" parent="." unique_id=330906111]
-script = ExtResource("3_5pnmu")
+[node name="GestorVidaComponent" parent="." unique_id=673144079 instance=ExtResource("3_5t8ew")]
+tipo = 0
 
 [node name="pistola" parent="." unique_id=784418745 instance=ExtResource("4_5t8ew")]
