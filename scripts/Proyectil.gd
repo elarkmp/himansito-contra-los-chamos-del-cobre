@@ -5,7 +5,11 @@ extends RigidBody2D
 @export var fuerza: float = 5
 @export var direccion: Vector2;
 
+@onready var sprite: Sprite2D = $Sprite2D
+@export var proyectilres: proyectil_res
+
 func _ready() -> void:
+	sprite.texture = proyectilres.textura
 	
 	if (enTesteo == false):
 		return

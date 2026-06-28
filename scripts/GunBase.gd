@@ -1,11 +1,14 @@
 class_name GunBase
 extends Node2D
 
-@export var textura: Texture2D
-@export var fireRate: float = 0.15
+@export var weaponres : weapon_res
+
+
+var fireRate: float = 0.15
 var force: float = 110
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var muzzle: Marker2D = $muzzle
 
 ## bala de prueba
 var bullet = preload("res://Escenas/Componentes/proyectil_component.tscn")
@@ -18,7 +21,10 @@ enum directionGun { right, left, up, down }
 var direction: directionGun = directionGun.right
 
 func _ready() -> void:
-	sprite.texture = textura
+	sprite.texture = weaponres.textura
+	fireRate = weaponres.fireRate
+	force = weaponres.force
+	muzzle.position = weaponres.muzzle_offset
 
 func _process(delta: float) -> void:
 	if not _canShoot:
@@ -68,7 +74,8 @@ func shoot() -> bool:
 	
 	var instance = bullet.instantiate()
 	get_tree().root.add_child(instance)
-	instance.global_position = get_parent().position
+	instance.global_position = muzzle.global_position
 	instance.ImpulsarObjeto(force, _direction)
+	instance.rotation = rotation
 	
 	return true

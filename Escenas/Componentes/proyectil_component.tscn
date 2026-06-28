@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://didkw5psus5ea" path="res://scripts/Proyectil.gd" id="1_qdmoe"]
 [ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="2_1vjgu"]
+[ext_resource type="Resource" uid="uid://fnbhqqpgr1bt" path="res://resources/balas/normal_bullet.tres" id="2_vajl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16rwx"]
 size = Vector2(59, 44)
@@ -12,6 +13,7 @@ gravity_scale = 0.0
 script = ExtResource("1_qdmoe")
 fuerza = 50.0
 direccion = Vector2(1, 0)
+proyectilres = ExtResource("2_vajl1")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=264367651]

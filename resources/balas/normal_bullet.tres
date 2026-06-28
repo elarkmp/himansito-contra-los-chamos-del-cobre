@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="bullet_res" format=3 uid="uid://fnbhqqpgr1bt"]
+
+[ext_resource type="Script" uid="uid://bspj5gjj5yhtk" path="res://scripts/proyectil_resource.gd" id="1_uxv2a"]
+[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="2_uq32o"]
+
+[resource]
+script = ExtResource("1_uxv2a")
+textura = ExtResource("2_uq32o")
+metadata/_custom_type_script = "uid://bspj5gjj5yhtk"

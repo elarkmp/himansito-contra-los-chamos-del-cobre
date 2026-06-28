@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyotetime: Timer = $Coyotetime
-@onready var arma: GunBase = $pistola
+@onready var arma: GunBase = $arma_base
 
 var gravity_scale = 3
 var speed = 500
