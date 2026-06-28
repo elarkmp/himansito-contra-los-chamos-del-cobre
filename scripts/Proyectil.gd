@@ -1,3 +1,4 @@
+class_name Proyectil
 extends RigidBody2D
 
 @export var enTesteo = false
@@ -13,12 +14,15 @@ func _ready() -> void:
 	
 	pass
 
-#func _process(delta: float) -> void:
-	#
-	#print(str(position))
-	#
-	#pass
+func _process(delta: float) -> void:
+	##print(str(position))
+	destroy()
+	pass
 
+func destroy():
+	await get_tree().create_timer(1.5).timeout
+	queue_free()
+	pass
 
 func ImpulsarObjeto(fuerza: float, direccion: Vector2):
 	

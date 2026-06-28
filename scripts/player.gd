@@ -51,7 +51,7 @@ func jump():
 
 func weapon(input_axis: float):
 	## disparar
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		arma.shoot()
 	
 	## cambiar direccion del arma

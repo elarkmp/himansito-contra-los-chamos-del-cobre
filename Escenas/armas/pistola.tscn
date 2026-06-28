@@ -5,3 +5,4 @@
 
 [node name="pistola" unique_id=784418745 instance=ExtResource("1_t1b6a")]
 textura = ExtResource("2_7y3ad")
+fireRate = 0.25

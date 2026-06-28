@@ -26,7 +26,7 @@ damage = 10
 shape = SubResource("CircleShape2D_kkljt")
 
 [node name="CajaPruebas" type="StaticBody2D" parent="cajas" unique_id=272344591]
-position = Vector2(1294, 470)
+position = Vector2(1302, 480.00003)
 scale = Vector2(0.0961, 0.45562503)
 metadata/_edit_group_ = true
 
@@ -116,7 +116,7 @@ scale = Vector2(9.734375, 1)
 texture = ExtResource("1_5kpxy")
 
 [node name="player" parent="." unique_id=735416826 instance=ExtResource("2_ur31k")]
-position = Vector2(566, 128)
+position = Vector2(99, 291)
 scale = Vector2(2, 2)
 metadata/_edit_group_ = true
 
