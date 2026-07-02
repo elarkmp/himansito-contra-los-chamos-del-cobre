@@ -5,11 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://b1s4sotjhpd5f" path="res://Escenas/Componentes/gestor_vida_component.tscn" id="2_28s81"]
 [ext_resource type="PackedScene" uid="uid://bbbepnweygx8a" path="res://Escenas/Entidades/player.tscn" id="2_ur31k"]
 [ext_resource type="PackedScene" uid="uid://2xv87iorg63g" path="res://Escenas/Componentes/damage_component.tscn" id="2_vd7g1"]
+[ext_resource type="Script" uid="uid://dw06vfso2rynd" path="res://scripts/MovimientoBase.gd" id="5_uto06"]
+[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="6_ygtyv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkljt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga66r"]
 size = Vector2(1239, 129.63887)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kkljt"]
+radius = 28.0
+height = 90.0
 
 [node name="Node2D" type="Node2D" unique_id=1776065144]
 
@@ -114,6 +120,24 @@ shape = SubResource("RectangleShape2D_ga66r")
 position = Vector2(559, 0)
 scale = Vector2(9.734375, 1)
 texture = ExtResource("1_5kpxy")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="cajas" unique_id=209773681 node_paths=PackedStringArray("objetivo")]
+position = Vector2(647, 154)
+script = ExtResource("5_uto06")
+velocidad = 0.89
+tiempoCambioDireccion = 13.17
+probabilidadCambio = 73.915
+tiempoMinimoEnCambio = 1.09
+tiempoMaximoEnCambio = 3.315
+objetivo = NodePath("../../player")
+
+[node name="Sprite2D" type="Sprite2D" parent="cajas/CharacterBody2D" unique_id=195767826]
+position = Vector2(-4.7683716e-07, 2.6226044e-06)
+scale = Vector2(0.23214287, 0.38392857)
+texture = ExtResource("6_ygtyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/CharacterBody2D" unique_id=311486568]
+shape = SubResource("CapsuleShape2D_kkljt")
 
 [node name="player" parent="." unique_id=735416826 instance=ExtResource("2_ur31k")]
 position = Vector2(99, 291)
