@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://di0yrdml8aej1"]
+
+[ext_resource type="Script" uid="uid://dw06vfso2rynd" path="res://scripts/MovimientoBase.gd" id="1_08qbq"]
+[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="2_njg85"]
+[ext_resource type="PackedScene" uid="uid://b1s4sotjhpd5f" path="res://Escenas/Componentes/gestor_vida_component.tscn" id="3_eowqu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kkljt"]
+radius = 28.0
+height = 90.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=292853469 node_paths=PackedStringArray("objetivo")]
+collision_layer = 4
+script = ExtResource("1_08qbq")
+velocidad = 0.89
+tiempoCambioDireccion = 13.17
+probabilidadCambio = 73.915
+tiempoMinimoEnCambio = 1.09
+tiempoMaximoEnCambio = 3.315
+objetivo = NodePath("")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=118985489]
+position = Vector2(-4.7683716e-07, 2.6226044e-06)
+scale = Vector2(0.23214287, 0.38392857)
+texture = ExtResource("2_njg85")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1932880582]
+shape = SubResource("CapsuleShape2D_kkljt")
+
+[node name="GestorVidaComponent" parent="." unique_id=673144079 node_paths=PackedStringArray("NodoPadre") instance=ExtResource("3_eowqu")]
+NodoPadre = NodePath("..")
+tipo = 1

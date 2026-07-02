@@ -25,15 +25,16 @@ height = 90.0
 position = Vector2(959, 485)
 enTesteo = true
 
-[node name="DamageComponent" parent="cajas/Proyectil" unique_id=1534548471 instance=ExtResource("2_vd7g1")]
+[node name="DamageComponent2" parent="cajas/Proyectil" unique_id=1534548471 instance=ExtResource("2_vd7g1")]
 damage = 10
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="cajas/Proyectil/DamageComponent" unique_id=1253914261]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="cajas/Proyectil/DamageComponent2" unique_id=1253914261]
 shape = SubResource("CircleShape2D_kkljt")
 
 [node name="CajaPruebas" type="StaticBody2D" parent="cajas" unique_id=272344591]
 position = Vector2(1302, 480.00003)
 scale = Vector2(0.0961, 0.45562503)
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/CajaPruebas" unique_id=1710939582]
@@ -52,6 +53,7 @@ texture = ExtResource("1_5kpxy")
 [node name="StaticBody2D" type="StaticBody2D" parent="cajas" unique_id=282525288]
 position = Vector2(23, 608)
 scale = Vector2(7.145, 1)
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D" unique_id=1916437543]
@@ -66,6 +68,7 @@ texture = ExtResource("1_5kpxy")
 [node name="StaticBody2D2" type="StaticBody2D" parent="cajas" unique_id=2005443832]
 position = Vector2(695, 387)
 scale = Vector2(0.31, 0.675)
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D2" unique_id=1100779888]
@@ -81,6 +84,7 @@ texture = ExtResource("1_5kpxy")
 [node name="StaticBody2D3" type="StaticBody2D" parent="cajas" unique_id=1693401154]
 position = Vector2(51, 443.99994)
 scale = Vector2(0.31, 0.675)
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D3" unique_id=663419995]
@@ -96,6 +100,7 @@ texture = ExtResource("1_5kpxy")
 [node name="StaticBody2D4" type="StaticBody2D" parent="cajas" unique_id=1434782570]
 position = Vector2(862, 342)
 scale = Vector2(0.025, 0.675)
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D4" unique_id=869533802]
@@ -110,6 +115,7 @@ texture = ExtResource("1_5kpxy")
 [node name="StaticBody2D5" type="StaticBody2D" parent="cajas" unique_id=376633659]
 position = Vector2(973, 283)
 scale = Vector2(0.025, 0.675)
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/StaticBody2D5" unique_id=333376237]
@@ -122,7 +128,8 @@ scale = Vector2(9.734375, 1)
 texture = ExtResource("1_5kpxy")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="cajas" unique_id=209773681 node_paths=PackedStringArray("objetivo")]
-position = Vector2(647, 154)
+position = Vector2(404, 140)
+collision_layer = 4
 script = ExtResource("5_uto06")
 velocidad = 0.89
 tiempoCambioDireccion = 13.17
@@ -138,6 +145,56 @@ texture = ExtResource("6_ygtyv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/CharacterBody2D" unique_id=311486568]
 shape = SubResource("CapsuleShape2D_kkljt")
+
+[node name="GestorVidaComponent" parent="cajas/CharacterBody2D" unique_id=870506725 node_paths=PackedStringArray("NodoPadre") instance=ExtResource("2_28s81")]
+NodoPadre = NodePath("..")
+tipo = 1
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="cajas" unique_id=2099678419 node_paths=PackedStringArray("objetivo")]
+position = Vector2(676, 152)
+collision_layer = 4
+script = ExtResource("5_uto06")
+velocidad = 0.89
+tiempoCambioDireccion = 13.17
+probabilidadCambio = 73.915
+tiempoMinimoEnCambio = 1.09
+tiempoMaximoEnCambio = 3.315
+objetivo = NodePath("../../player")
+
+[node name="Sprite2D" type="Sprite2D" parent="cajas/CharacterBody2D2" unique_id=465281979]
+position = Vector2(-4.7683716e-07, 2.6226044e-06)
+scale = Vector2(0.23214287, 0.38392857)
+texture = ExtResource("6_ygtyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/CharacterBody2D2" unique_id=397070177]
+shape = SubResource("CapsuleShape2D_kkljt")
+
+[node name="GestorVidaComponent" parent="cajas/CharacterBody2D2" unique_id=176009137 node_paths=PackedStringArray("NodoPadre") instance=ExtResource("2_28s81")]
+NodoPadre = NodePath("..")
+tipo = 1
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="cajas" unique_id=763724769 node_paths=PackedStringArray("objetivo")]
+position = Vector2(1173, 227)
+collision_layer = 4
+script = ExtResource("5_uto06")
+velocidad = 0.89
+tiempoCambioDireccion = 13.17
+probabilidadCambio = 73.915
+tiempoMinimoEnCambio = 1.09
+tiempoMaximoEnCambio = 3.315
+objetivo = NodePath("../../player")
+
+[node name="Sprite2D" type="Sprite2D" parent="cajas/CharacterBody2D3" unique_id=1089041731]
+position = Vector2(-4.7683716e-07, 2.6226044e-06)
+scale = Vector2(0.23214287, 0.38392857)
+texture = ExtResource("6_ygtyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cajas/CharacterBody2D3" unique_id=648505015]
+shape = SubResource("CapsuleShape2D_kkljt")
+
+[node name="GestorVidaComponent" parent="cajas/CharacterBody2D3" unique_id=670153146 node_paths=PackedStringArray("NodoPadre") instance=ExtResource("2_28s81")]
+NodoPadre = NodePath("..")
+tipo = 1
 
 [node name="player" parent="." unique_id=735416826 instance=ExtResource("2_ur31k")]
 position = Vector2(99, 291)

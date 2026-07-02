@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c0wbstjhbhr60"]
+
+[ext_resource type="PackedScene" uid="uid://btd6vkxughnd0" path="res://Escenas/Componentes/proyectil_component.tscn" id="1_fiput"]
+[ext_resource type="PackedScene" uid="uid://2xv87iorg63g" path="res://Escenas/Componentes/damage_component.tscn" id="2_3wu7g"]
+[ext_resource type="Script" uid="uid://ck63sq6wba3rv" path="res://scripts/explode.gd" id="3_3wu7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga66r"]
+size = Vector2(363.63635, 54.716988)
+
+[node name="bullet" unique_id=1635148290 instance=ExtResource("1_fiput")]
+collision_layer = 0
+collision_mask = 0
+
+[node name="DamageComponent" parent="." index="1" unique_id=1534548471 instance=ExtResource("2_3wu7g")]
+collision_layer = 0
+collision_mask = 5
+damageTipe = 1
+damage = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageComponent" index="0" unique_id=69104329]
+shape = SubResource("RectangleShape2D_ga66r")
+
+[node name="explode" type="Node" parent="." index="2" unique_id=796599439]
+script = ExtResource("3_3wu7g")
+
+[connection signal="body_entered" from="DamageComponent" to="explode" method="_on_damage_component_body_entered"]

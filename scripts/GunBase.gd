@@ -11,7 +11,7 @@ var force: float = 110
 @onready var muzzle: Marker2D = $muzzle
 
 ## bala de prueba
-var bullet = preload("res://Escenas/Componentes/proyectil_component.tscn")
+var bullet = preload("res://Escenas/Entidades/bullet.tscn")
 
 var _canShoot: bool = true
 var _cooldown: float = 0.0
@@ -75,7 +75,7 @@ func shoot() -> bool:
 	var instance = bullet.instantiate()
 	get_tree().root.add_child(instance)
 	instance.global_position = muzzle.global_position
-	instance.ImpulsarObjeto(force, _direction)
 	instance.rotation = rotation
+	instance.ImpulsarObjeto(force, _direction)
 	
 	return true

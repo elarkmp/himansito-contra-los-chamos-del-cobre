@@ -3,11 +3,14 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyotetime: Timer = $Coyotetime
 @onready var arma: GunBase = $arma_base
+@onready var chuchillo: MeleeAttack = $melee_attack
+
 
 var gravity_scale = 3
 var speed = 500
 var jump_force = -1000
 var lastDirection: GunBase.directionGun = arma.directionGun.right
+
 
 
 ## lógica
@@ -52,7 +55,10 @@ func jump():
 func weapon(input_axis: float):
 	## disparar
 	if Input.is_action_pressed("shoot"):
-		arma.shoot()
+		if not chuchillo.in_melee_attack_area and not chuchillo.in_attack:
+			arma.shoot()
+		else:
+			chuchillo.attack()
 	
 	## cambiar direccion del arma
 	if input_axis != 0:
@@ -78,6 +84,11 @@ func animWeapon(input_axis: float):
 		_: ## default
 			angle = 0
 	arma.rotation_degrees = angle * arma.scale.x ## rotar
+	
+	if chuchillo.in_attack:
+		arma.hide()
+	else:
+		arma.show()
 
 func air_movement(input_axis, delta):
 	if is_on_floor():

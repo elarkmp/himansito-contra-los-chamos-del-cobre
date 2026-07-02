@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://kq5c3wled4in" path="res://sprites/player/FG-Himansito.png" id="2_5t8ew"]
 [ext_resource type="PackedScene" uid="uid://b1s4sotjhpd5f" path="res://Escenas/Componentes/gestor_vida_component.tscn" id="3_5t8ew"]
 [ext_resource type="PackedScene" uid="uid://c0pk8h0b465p7" path="res://Escenas/armas/arma_base.tscn" id="4_5t8ew"]
+[ext_resource type="Script" uid="uid://ywd5qeiln6f1" path="res://scripts/cuchillo.gd" id="6_cxj64"]
+[ext_resource type="Texture2D" uid="uid://3w630uc5exd" path="res://sprites/player/cuchillazo.png" id="7_3brmp"]
+[ext_resource type="PackedScene" uid="uid://2xv87iorg63g" path="res://Escenas/Componentes/damage_component.tscn" id="7_k0adn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2fydp"]
-radius = 9.999999
-height = 32.60871
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3brmp"]
+size = Vector2(16, 32.60871)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n5he"]
 atlas = ExtResource("2_5t8ew")
@@ -193,18 +195,54 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ao2i"]
+atlas = ExtResource("7_3brmp")
+region = Rect2(0, 0, 11, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aro8m"]
+atlas = ExtResource("7_3brmp")
+region = Rect2(11, 0, 11, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mni5k"]
+atlas = ExtResource("7_3brmp")
+region = Rect2(22, 0, 11, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mrjva"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ao2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aro8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mni5k")
+}],
+"loop": 0,
+"name": &"cuchillazo",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga66r"]
+size = Vector2(18, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrjva"]
+size = Vector2(17.999998, 30)
+
 [node name="player" type="CharacterBody2D" unique_id=735416826]
+collision_layer = 0
 script = ExtResource("1_i8vih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1525362219]
 position = Vector2(0, 9)
 scale = Vector2(1, 0.9199996)
-shape = SubResource("CapsuleShape2D_2fydp")
+shape = SubResource("RectangleShape2D_3brmp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605574474]
 sprite_frames = SubResource("SpriteFrames_ga66r")
-animation = &"run"
-autoplay = "run"
+animation = &"Idle"
+autoplay = "Idle"
 speed_scale = 2.0
 
 [node name="Coyotetime" type="Timer" parent="." unique_id=719879834]
@@ -215,3 +253,35 @@ one_shot = true
 tipo = 0
 
 [node name="arma_base" parent="." unique_id=784418745 instance=ExtResource("4_5t8ew")]
+
+[node name="melee_attack" type="Area2D" parent="." unique_id=1866556924]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("6_cxj64")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="melee_attack" unique_id=1726646584]
+visible = false
+position = Vector2(22, 9)
+scale = Vector2(1.6125, 1.6125)
+sprite_frames = SubResource("SpriteFrames_mrjva")
+animation = &"cuchillazo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="melee_attack" unique_id=162063739]
+position = Vector2(22, 9)
+shape = SubResource("RectangleShape2D_ga66r")
+
+[node name="DamageComponent" parent="melee_attack" unique_id=1534548471 instance=ExtResource("7_k0adn")]
+position = Vector2(0.4344864, 61.915462)
+collision_layer = 0
+collision_mask = 4
+damageTipe = 1
+damage = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="melee_attack/DamageComponent" unique_id=2145849221]
+position = Vector2(130.70007, -49.92026)
+scale = Vector2(6.060606, 0.94339633)
+shape = SubResource("RectangleShape2D_mrjva")
+disabled = true
+
+[connection signal="body_entered" from="melee_attack" to="melee_attack" method="_on_body_entered"]
+[connection signal="body_exited" from="melee_attack" to="melee_attack" method="_on_body_exited"]
