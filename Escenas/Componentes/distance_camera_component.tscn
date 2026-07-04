@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c8mjqg8354dwo"]
+
+[ext_resource type="Script" uid="uid://55mdagurusbw" path="res://scripts/distance_camera_component.gd" id="1_ryff2"]
+
+[node name="distance_camera_component" type="Node2D" unique_id=1622920477 node_paths=PackedStringArray("vehicle_base")]
+script = ExtResource("1_ryff2")
+vehicle_base = NodePath("")
+
+[node name="distancia1" type="RayCast2D" parent="." unique_id=1967130109]
+target_position = Vector2(0, 100)
+
+[node name="distancia2" type="RayCast2D" parent="." unique_id=857155922]
+target_position = Vector2(0, 150)
+
+[node name="distancia3" type="RayCast2D" parent="." unique_id=647734486]
+target_position = Vector2(0, 200)

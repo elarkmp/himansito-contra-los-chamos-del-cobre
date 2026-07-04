@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://btyryn33napc3"]
+
+[ext_resource type="Script" uid="uid://growmsysl5es" path="res://scripts/vehicle_base.gd" id="1_nvqa8"]
+[ext_resource type="Texture2D" uid="uid://d0xefs75cpwrh" path="res://sprites/player/Sprite-0001.png" id="1_xpf7o"]
+[ext_resource type="PackedScene" uid="uid://b1s4sotjhpd5f" path="res://Escenas/Componentes/gestor_vida_component.tscn" id="2_nvqa8"]
+[ext_resource type="Script" uid="uid://dm63cpyepn6ri" path="res://scripts/entered_area.gd" id="4_jptw4"]
+[ext_resource type="Texture2D" uid="uid://r4ry57pves76" path="res://icon.svg" id="5_7ougk"]
+[ext_resource type="Script" uid="uid://dlw5xmlsjndjw" path="res://scripts/vehicle_gun.gd" id="5_bc83w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5yk6"]
+atlas = ExtResource("1_xpf7o")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvqa8"]
+atlas = ExtResource("1_xpf7o")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jptw4"]
+atlas = ExtResource("1_xpf7o")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ougk"]
+atlas = ExtResource("1_xpf7o")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ga66r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5yk6")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvqa8")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jptw4")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ougk")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ygtyv"]
+radius = 32.06244
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvqa8"]
+size = Vector2(130, 99)
+
+[node name="VehicleBase" type="CharacterBody2D" unique_id=97130481]
+collision_layer = 0
+script = ExtResource("1_nvqa8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=315719430]
+sprite_frames = SubResource("SpriteFrames_ga66r")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1282604113]
+shape = SubResource("CircleShape2D_ygtyv")
+
+[node name="GestorVidaComponent" parent="." unique_id=673144079 instance=ExtResource("2_nvqa8")]
+tipo = 0
+
+[node name="Entered_area" type="Area2D" parent="." unique_id=1816615790]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_jptw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entered_area" unique_id=873599418]
+position = Vector2(0, -17.5)
+shape = SubResource("RectangleShape2D_nvqa8")
+
+[node name="vehicle_gun" type="Node2D" parent="." unique_id=1334638946]
+position = Vector2(0, 11)
+script = ExtResource("5_bc83w")
+
+[node name="Sprite2D" type="Sprite2D" parent="vehicle_gun" unique_id=1904955341]
+position = Vector2(17, 0)
+scale = Vector2(0.34375, 0.109375)
+texture = ExtResource("5_7ougk")
+
+[node name="Marker2D" type="Marker2D" parent="vehicle_gun" unique_id=826928766]
+position = Vector2(40, 0)
+
+[node name="Timer" type="Timer" parent="vehicle_gun" unique_id=2019485580]
+wait_time = 0.015
+one_shot = true
+
+[connection signal="body_entered" from="Entered_area" to="Entered_area" method="_on_body_entered"]
+[connection signal="body_exited" from="Entered_area" to="Entered_area" method="_on_body_exited"]
+[connection signal="timeout" from="vehicle_gun/Timer" to="vehicle_gun" method="_on_timer_timeout"]

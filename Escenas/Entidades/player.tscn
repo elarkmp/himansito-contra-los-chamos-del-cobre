@@ -231,7 +231,7 @@ size = Vector2(18, 30)
 size = Vector2(17.999998, 30)
 
 [node name="player" type="CharacterBody2D" unique_id=735416826]
-collision_layer = 0
+collision_layer = 2
 script = ExtResource("1_i8vih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1525362219]
@@ -250,6 +250,7 @@ wait_time = 0.15
 one_shot = true
 
 [node name="GestorVidaComponent" parent="." unique_id=673144079 instance=ExtResource("3_5t8ew")]
+vida = 1
 tipo = 0
 
 [node name="arma_base" parent="." unique_id=784418745 instance=ExtResource("4_5t8ew")]

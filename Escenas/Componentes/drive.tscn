@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bhe4iiau8axlc"]
+
+[ext_resource type="Script" uid="uid://dp1u2kvxrkk4s" path="res://scripts/drive.gd" id="1_16v23"]
+
+[node name="Drive" type="Node" unique_id=1940371124 node_paths=PackedStringArray("vehicle_base")]
+script = ExtResource("1_16v23")
+vehicle_base = NodePath("")

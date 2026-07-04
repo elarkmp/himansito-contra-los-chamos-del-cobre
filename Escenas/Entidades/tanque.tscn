@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cynhkwkhofa67"]
+
+[ext_resource type="PackedScene" uid="uid://btyryn33napc3" path="res://Escenas/Entidades/vehicle_base.tscn" id="1_e75qq"]
+[ext_resource type="PackedScene" uid="uid://bhe4iiau8axlc" path="res://Escenas/Componentes/drive.tscn" id="2_edpxq"]
+
+[node name="tanque" unique_id=97130481 instance=ExtResource("1_e75qq")]
+
+[node name="Drive" parent="." index="5" unique_id=1940371124 node_paths=PackedStringArray("vehicle_base") instance=ExtResource("2_edpxq")]
+vehicle_base = NodePath("..")

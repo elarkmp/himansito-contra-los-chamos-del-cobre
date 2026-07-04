@@ -1,9 +1,9 @@
 extends CharacterBody2D
-
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyotetime: Timer = $Coyotetime
 @onready var arma: GunBase = $arma_base
 @onready var chuchillo: MeleeAttack = $melee_attack
+var can_move: bool = true
 
 
 var gravity_scale = 3
@@ -15,19 +15,20 @@ var lastDirection: GunBase.directionGun = arma.directionGun.right
 
 ## lógica
 func _physics_process(delta: float) -> void:
-	var input_axis = Input.get_axis("left", "right")
-	apply_gravity(delta)
-	movement(input_axis, delta)
-	jump()
-	weapon(input_axis)
-	animWeapon(input_axis)
-	air_movement(input_axis, delta)
-	update_animations(input_axis)
-	var was_on_floor = is_on_floor()
-	move_and_slide()
-	var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >=0
-	if just_left_edge:
-		coyotetime.start()
+	if can_move:
+		var input_axis = Input.get_axis("left", "right")
+		apply_gravity(delta)
+		movement(input_axis, delta)
+		jump()
+		weapon(input_axis)
+		animWeapon(input_axis)
+		air_movement(input_axis, delta)
+		update_animations(input_axis)
+		var was_on_floor = is_on_floor()
+		move_and_slide()
+		var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >=0
+		if just_left_edge:
+			coyotetime.start()
 
 func apply_gravity(delta):
 	if not is_on_floor():
@@ -125,3 +126,10 @@ func jump_anim():
 	tween.tween_property(animated_sprite_2d, "scale", Vector2(0.8, 1.2), 0.1 / 2)
 	tween.tween_property(animated_sprite_2d, "scale", Vector2(1.0, 1.0), 0.1 / 2)
 	
+func enter_car():
+	can_move = false
+	hide()
+
+func exit_car():
+	can_move = true
+	show()

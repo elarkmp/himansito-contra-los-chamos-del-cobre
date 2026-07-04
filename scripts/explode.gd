@@ -1,5 +1,8 @@
 extends Node
-@onready var bullet: Proyectil = $".."
+@onready var bullet
+
+func _ready() -> void:
+	bullet = get_parent()
 
 
 

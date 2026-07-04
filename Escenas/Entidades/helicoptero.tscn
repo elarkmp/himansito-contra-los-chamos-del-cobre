@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c6b0dybh0i0si"]
+
+[ext_resource type="PackedScene" uid="uid://btyryn33napc3" path="res://Escenas/Entidades/vehicle_base.tscn" id="1_brhaf"]
+[ext_resource type="PackedScene" uid="uid://c7nsauy0vmgh3" path="res://Escenas/Entidades/Fly.tscn" id="2_bwqoy"]
+[ext_resource type="PackedScene" uid="uid://c8mjqg8354dwo" path="res://Escenas/Componentes/distance_camera_component.tscn" id="3_bwqoy"]
+
+[node name="helicoptero" unique_id=97130481 instance=ExtResource("1_brhaf")]
+
+[node name="vehicle_gun" parent="." index="4" unique_id=1334638946]
+max_direction_left = -210.0
+max_direction_right = 45.0
+
+[node name="Fly" parent="." index="5" unique_id=1950683898 node_paths=PackedStringArray("vehicle_base") instance=ExtResource("2_bwqoy")]
+vehicle_base = NodePath("..")
+
+[node name="distance_camera_component" parent="." index="6" unique_id=1622920477 node_paths=PackedStringArray("vehicle_base") instance=ExtResource("3_bwqoy")]
+vehicle_base = NodePath("..")
