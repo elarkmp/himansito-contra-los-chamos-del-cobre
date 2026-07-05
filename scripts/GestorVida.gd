@@ -1,5 +1,6 @@
 class_name GestorVida
 extends Node
+signal On_Entity_Die 
 
 enum TipoEntidad {jugador, enemigo, objeto}
 
@@ -12,12 +13,6 @@ enum TipoEntidad {jugador, enemigo, objeto}
 
 @export var tipo: TipoEntidad = TipoEntidad.objeto
 
-#func _ready() -> void:
-	#
-	#print(str(vida));
-	#
-	#pass
-	
 ## esto procesa la vida de todas las entidades 
 ## que tengan este componente y puedan morir
 func _process(delta: float) -> void:
@@ -36,6 +31,7 @@ func isDead() -> bool:
 	if (vida <= 0): 
 		muerto = true;
 		print("entidad muerta:" + str(NodoPadre));
+		On_Entity_Die.emit()
 		#NodoPadre.queue_free() ##linea solo de prueba no permanente
 		return true
 	return false

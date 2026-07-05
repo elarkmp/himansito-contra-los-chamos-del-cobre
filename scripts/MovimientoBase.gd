@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var moverse: bool = true;
+
 @export var velocidad: float 
 @export var tiempoCambioDireccion: float
 @export var probabilidadCambio: float
@@ -13,7 +15,21 @@ var nuevaDireccion: Vector2
 
 var reloj = 0
 
+func _ready() -> void:
+	
+	$GestorVidaComponent.On_Entity_Die.connect(On_Entity_Die)
+	
+	pass
+
+func On_Entity_Die() -> void:
+	
+	moverse = false
+	
+	pass
+
 func _process(delta: float) -> void:
+	
+	if(moverse == false): return
 	
 	DecidirCambioDireccion(delta)
 	
@@ -46,6 +62,8 @@ func NuevaDireccion():
 	pass
 
 func _physics_process(delta: float) -> void:
+	if(moverse == false): return
+	
 	AplicarGravedad(delta)
 	
 	if(siguiendoObjetivo):
