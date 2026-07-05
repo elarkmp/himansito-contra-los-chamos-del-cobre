@@ -15,7 +15,6 @@ enum STATE {
 	FALL,
 }
 
-
 var current_state : STATE = STATE.IDLE
 
 func _physics_process(delta: float) -> void:
@@ -52,7 +51,6 @@ func _physics_process(delta: float) -> void:
 
 	driving = vehicle_base.driving
 	conductor = vehicle_base.conductor
-
 
 	if not driving:
 		current_state = STATE.IDLE

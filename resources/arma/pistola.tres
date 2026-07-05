@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="weapon_res" format=3 uid="uid://20qxfyibybsh"]
 
-[ext_resource type="Script" uid="uid://bk2yo877tn6wx" path="res://scripts/Weapon_resources.gd" id="1_reopp"]
+[ext_resource type="Script" uid="uid://bk2yo877tn6wx" path="res://scripts/resources/Weapon_resources.gd" id="1_reopp"]
 [ext_resource type="Texture2D" uid="uid://wc2oe56rsy6r" path="res://sprites/Pistola.png" id="2_adueh"]
+
 
 [resource]
 script = ExtResource("1_reopp")
