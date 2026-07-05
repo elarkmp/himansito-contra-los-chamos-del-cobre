@@ -22,5 +22,6 @@ func _physics_process(delta: float) -> void:
 			camara.zoom = Vector2(0.6, 0.6)
 			camara.position = Vector2(0.0, 70.0)
 	else:
+		if camara == null: return
 		camara.zoom = Vector2(0.9, 0.9)
 		camara.position = camara_initial_position

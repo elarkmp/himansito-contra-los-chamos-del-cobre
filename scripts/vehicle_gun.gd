@@ -16,8 +16,6 @@ func _ready() -> void:
 	if max_direction_right > 0.0:
 		max_direction_right -= 15
 
-
-
 func _process(delta: float) -> void:
 	if not _canShoot:
 		_cooldown -= delta

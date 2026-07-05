@@ -2,33 +2,36 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyotetime: Timer = $Coyotetime
 @onready var arma: GunBase = $arma_base
-@onready var chuchillo: MeleeAttack = $melee_attack
+@onready var cuchillo: MeleeAttack = $melee_attack
+@onready var vida: GestorVida = $GestorVidaComponent
 var can_move: bool = true
-
 
 var gravity_scale = 3
 var speed = 500
 var jump_force = -1000
 var lastDirection: GunBase.directionGun = arma.directionGun.right
 
-
-
 ## lógica
 func _physics_process(delta: float) -> void:
 	if can_move:
-		var input_axis = Input.get_axis("left", "right")
-		apply_gravity(delta)
-		movement(input_axis, delta)
-		jump()
-		weapon(input_axis)
-		animWeapon(input_axis)
-		air_movement(input_axis, delta)
-		update_animations(input_axis)
-		var was_on_floor = is_on_floor()
-		move_and_slide()
-		var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >=0
-		if just_left_edge:
-			coyotetime.start()
+		_executePlayer(delta)
+
+func _executePlayer(delta: float) -> void:
+	var input_axis = Input.get_axis("left", "right")
+	print("vida:" + str(vida.vida))
+	apply_gravity(delta)
+	movement(input_axis, delta)
+	jump()
+	weapon(input_axis)
+	animWeapon(input_axis)
+	air_movement(input_axis, delta)
+	update_animations(input_axis)
+	var was_on_floor = is_on_floor()
+	move_and_slide()
+	var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >=0
+	if just_left_edge:
+		coyotetime.start()
+	isPlayerDead()
 
 func apply_gravity(delta):
 	if not is_on_floor():
@@ -56,10 +59,10 @@ func jump():
 func weapon(input_axis: float):
 	## disparar
 	if Input.is_action_pressed("shoot"):
-		if not chuchillo.in_melee_attack_area and not chuchillo.in_attack:
+		if not cuchillo.in_melee_attack_area and not cuchillo.in_attack:
 			arma.shoot()
 		else:
-			chuchillo.attack()
+			cuchillo.attack()
 	
 	## cambiar direccion del arma
 	if input_axis != 0:
@@ -70,6 +73,9 @@ func weapon(input_axis: float):
 		arma.direction = arma.directionGun.down
 	else:
 		arma.direction = lastDirection
+	
+	if input_axis != 0:
+		cuchillo.position = cuchillo.posLeft if input_axis < 0 else cuchillo.posRight
 
 ## animacion del arma
 func animWeapon(input_axis: float):
@@ -86,10 +92,15 @@ func animWeapon(input_axis: float):
 			angle = 0
 	arma.rotation_degrees = angle * arma.scale.x ## rotar
 	
-	if chuchillo.in_attack:
+	## cuchillo
+	if cuchillo.in_attack:
 		arma.hide()
 	else:
 		arma.show()
+		
+	## flipear cuchillo
+	if input_axis != 0:
+		cuchillo.animated_sprite_2d.flip_h = true if input_axis < 0 else false
 
 func air_movement(input_axis, delta):
 	if is_on_floor():
@@ -104,9 +115,6 @@ func update_animations(input_axis):
 	if input_axis !=0:
 		animated_sprite_2d.flip_h = (input_axis < 0)
 		animated_sprite_2d.play("run")
-		
-		##flipear el arma asi todo incrustado
-		
 		
 	else:
 		animated_sprite_2d.play("Idle")
@@ -133,3 +141,7 @@ func enter_car():
 func exit_car():
 	can_move = true
 	show()
+
+func isPlayerDead() -> bool:
+	if vida.muerto: queue_free();
+	return false

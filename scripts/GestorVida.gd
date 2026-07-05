@@ -17,8 +17,13 @@ enum TipoEntidad {jugador, enemigo, objeto}
 	#print(str(vida));
 	#
 	#pass
+	
+## esto procesa la vida de todas las entidades 
+## que tengan este componente y puedan morir
+func _process(delta: float) -> void:
+	isDead()
 
-func DamageEntity(damage: int, damageTipe: TipoEntidad):
+func DamageEntity(damage: int, damageTipe: TipoEntidad) -> void:
 	
 	print("Damage Taken");
 	
@@ -26,13 +31,11 @@ func DamageEntity(damage: int, damageTipe: TipoEntidad):
 		return
 	
 	vida -= damage;
-	print("vida restante " + str(vida))
-	
-	pass
 
+func isDead() -> bool:
 	if (vida <= 0): 
 		muerto = true;
-		print("Morido Fokin Asi muelto");
-		NodoPadre.queue_free() ##linea solo de prueba no permanente
-	
-	pass
+		print("entidad muerta:" + str(NodoPadre));
+		#NodoPadre.queue_free() ##linea solo de prueba no permanente
+		return true
+	return false

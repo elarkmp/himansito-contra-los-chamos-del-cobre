@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func ObtenerHubicacion() -> Vector2:  
-	
+	if objetivo == null: return Vector2(0, 0)
 	var vectorObjetivo = objetivo.global_position - global_position;
 	vectorObjetivo.normalized()
 	
