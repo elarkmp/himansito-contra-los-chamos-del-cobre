@@ -1,10 +1,15 @@
+class_name Player
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyotetime: Timer = $Coyotetime
 @onready var arma: GunBase = $arma_base
 @onready var cuchillo: MeleeAttack = $melee_attack
 @onready var vida: GestorVida = $GestorVidaComponent
+@onready var camera: Camera2D = $Camera2D
+
 var can_move: bool = true
+
+var agachado: bool = false
 
 var gravity_scale = 3
 var speed = 500
@@ -31,7 +36,6 @@ func _executePlayer(delta: float) -> void:
 	var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >=0
 	if just_left_edge:
 		coyotetime.start()
-	isPlayerDead()
 
 func apply_gravity(delta):
 	if not is_on_floor():
@@ -70,7 +74,12 @@ func weapon(input_axis: float):
 	if Input.is_action_pressed("up"):
 		arma.direction = arma.directionGun.up
 	elif Input.is_action_pressed("down"):
-		arma.direction = arma.directionGun.down
+		if !is_on_floor():
+			agachado = false
+			arma.direction = arma.directionGun.down
+		else:
+			agachado = true
+			arma.direction = lastDirection
 	else:
 		arma.direction = lastDirection
 	
@@ -86,8 +95,11 @@ func animWeapon(input_axis: float):
 	match arma.direction:
 		arma.directionGun.up: ## arriba
 			angle = -90
-		arma.directionGun.down: ## abajo
-			angle = 90
+		arma.directionGun.down:
+			if !agachado: ## abajo
+				angle = 90
+			else:
+				angle = 0.0
 		_: ## default
 			angle = 0
 	arma.rotation_degrees = angle * arma.scale.x ## rotar
@@ -142,6 +154,6 @@ func exit_car():
 	can_move = true
 	show()
 
-func isPlayerDead() -> bool:
-	if vida.muerto: queue_free();
-	return false
+
+func _on_gestor_vida_component_on_entity_die() -> void:
+	queue_free()

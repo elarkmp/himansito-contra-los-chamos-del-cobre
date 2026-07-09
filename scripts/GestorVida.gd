@@ -1,5 +1,6 @@
 class_name GestorVida
 extends Node
+
 signal On_Entity_Die 
 
 enum TipoEntidad {jugador, enemigo, objeto}
@@ -30,7 +31,7 @@ func DamageEntity(damage: int, damageTipe: TipoEntidad) -> void:
 func isDead() -> bool:
 	if (vida <= 0): 
 		muerto = true;
-		print("entidad muerta:" + str(NodoPadre));
+		##print("entidad muerta:" + str(NodoPadre));
 		On_Entity_Die.emit()
 		#NodoPadre.queue_free() ##linea solo de prueba no permanente
 		return true

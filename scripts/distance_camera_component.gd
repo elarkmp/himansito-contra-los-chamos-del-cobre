@@ -8,7 +8,7 @@ var camara_initial_position: Vector2
 
 func _ready() -> void:
 	camara = vehicle_base.camara
-	camara_initial_position = camara.position
+	#camara_initial_position = Player.camera.position
 	
 func _physics_process(delta: float) -> void:
 	if vehicle_base.driving:

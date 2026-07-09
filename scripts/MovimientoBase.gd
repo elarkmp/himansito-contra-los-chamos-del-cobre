@@ -95,3 +95,7 @@ func AplicarGravedad(delta: float):
 		velocity += get_gravity() * delta
 		
 	pass
+
+
+func _on_gestor_vida_component_on_entity_die() -> void:
+	queue_free()

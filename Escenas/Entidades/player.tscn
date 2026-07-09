@@ -231,8 +231,15 @@ size = Vector2(18, 30)
 size = Vector2(17.999998, 30)
 
 [node name="player" type="CharacterBody2D" unique_id=735416826]
+scale = Vector2(2, 2)
 collision_layer = 2
 script = ExtResource("1_i8vih")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=288804020]
+position = Vector2(0, -44)
+zoom = Vector2(0.9, 0.9)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1525362219]
 position = Vector2(0, 9)
@@ -285,5 +292,6 @@ scale = Vector2(6.060606, 0.94339633)
 shape = SubResource("RectangleShape2D_mrjva")
 disabled = true
 
+[connection signal="On_Entity_Die" from="GestorVidaComponent" to="." method="_on_gestor_vida_component_on_entity_die"]
 [connection signal="body_entered" from="melee_attack" to="melee_attack" method="_on_body_entered"]
 [connection signal="body_exited" from="melee_attack" to="melee_attack" method="_on_body_exited"]
