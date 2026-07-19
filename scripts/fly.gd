@@ -20,6 +20,8 @@ enum STATE {
 var current_state : STATE = STATE.IDLE
 
 func _physics_process(delta: float) -> void:
+	if conductor == null:
+		driving = false
 	var input_axis = Input.get_axis("left", "right")
 	if driving:
 		conductor.global_position = vehicle_base.global_position

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bymtf506e1n51"]
+
+[ext_resource type="Script" uid="uid://b2kcsmsrqa6vd" path="res://scripts/managers/screen_text.gd" id="1_cf2uj"]
+
+[node name="text" type="Control" unique_id=1729589309]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cf2uj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=99554935]
+
+[node name="texto medio" type="Label" parent="CanvasLayer" unique_id=1253987479]
+visible = false
+modulate = Color(0.9764706, 0.9764706, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -574.0
+offset_top = -106.0
+offset_right = 574.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "TEXTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="texto bajo" type="Label" parent="CanvasLayer" unique_id=381033712]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -574.0
+offset_top = 106.0
+offset_right = 574.0
+offset_bottom = 318.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "TEXTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

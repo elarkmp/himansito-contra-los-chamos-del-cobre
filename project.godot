@@ -15,6 +15,14 @@ run/main_scene="uid://bjportdmbstp5"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+TextoEnPantalla="*uid://bymtf506e1n51"
+
+[global_group]
+
+player=""
+
 [input]
 
 left={
