@@ -196,15 +196,10 @@ shape = SubResource("CapsuleShape2D_kkljt")
 position = Vector2(99, 291)
 metadata/_edit_group_ = true
 
-[node name="tanque" parent="." unique_id=97130481 node_paths=PackedStringArray("conductor") instance=ExtResource("8_ygtyv")]
+[node name="tanque" parent="." unique_id=97130481 instance=ExtResource("8_ygtyv")]
 position = Vector2(1717.0001, 212)
 scale = Vector2(3, 3)
-conductor = NodePath("../player")
-
-[node name="helicoptero" parent="." unique_id=1806158830 node_paths=PackedStringArray("conductor") instance=ExtResource("9_qo1ux")]
-position = Vector2(2551, 209)
-scale = Vector2(3, 3)
-conductor = NodePath("../player")
+collision_layer = 0
 
 [node name="Label" type="Label" parent="." unique_id=1405079659]
 offset_left = 1997.0
@@ -223,5 +218,9 @@ scale = Vector2(5, 5)
 
 [node name="Camera2D" parent="." unique_id=77195339 node_paths=PackedStringArray("target") instance=ExtResource("12_lbo0v")]
 target = NodePath("../player")
+
+[node name="Helicoptero" parent="." unique_id=73950425 instance=ExtResource("9_qo1ux")]
+position = Vector2(2438, 213)
+scale = Vector2(3, 3)
 
 [connection signal="On_Entity_Die" from="cajas/enemigo 1/GestorVidaComponent" to="cajas/enemigo 1" method="_on_gestor_vida_component_on_entity_die"]

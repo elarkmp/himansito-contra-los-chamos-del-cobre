@@ -20,8 +20,13 @@ enum STATE {
 var current_state : STATE = STATE.IDLE
 
 func _physics_process(delta: float) -> void:
+	
+	driving = vehicle_base.driving
+	conductor = vehicle_base.conductor
+	
 	if conductor == null:
 		driving = false
+		
 	var input_axis = Input.get_axis("left", "right")
 	if driving:
 		conductor.global_position = vehicle_base.global_position
@@ -61,9 +66,6 @@ func _physics_process(delta: float) -> void:
 					vehicle_base.velocity.y = 0
 				elif Input.is_action_pressed("up"):
 					current_state = STATE.FLY_UP
-
-	driving = vehicle_base.driving
-	conductor = vehicle_base.conductor
 	
 	if not driving:
 		if not vehicle_base.is_on_floor():

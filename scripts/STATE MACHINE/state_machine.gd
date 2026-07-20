@@ -19,7 +19,7 @@ func _state_default_start() -> void:
 
 #funcion que lanza los estados y el estado inicial
 func _state_start() -> void:
-	prints("StateMachine", controlled_node.name, "start state", current_state.name)
+	#prints("StateMachine", controlled_node.name, "start state", current_state.name)
 #configuración del estado
 	current_state.controlled_node = controlled_node
 	current_state.state_machine = self

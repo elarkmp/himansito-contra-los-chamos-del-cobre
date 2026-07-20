@@ -7,9 +7,40 @@
 [ext_resource type="Script" uid="uid://ywd5qeiln6f1" path="res://scripts/cuchillo.gd" id="6_cxj64"]
 [ext_resource type="Texture2D" uid="uid://3w630uc5exd" path="res://sprites/player/cuchillazo.png" id="7_3brmp"]
 [ext_resource type="PackedScene" uid="uid://2xv87iorg63g" path="res://Escenas/Componentes/damage_component.tscn" id="7_k0adn"]
+[ext_resource type="PackedScene" uid="uid://b5164o04t0ekn" path="res://Escenas/Componentes/state_machine.tscn" id="8_k0adn"]
+[ext_resource type="Script" uid="uid://cgpks5byxc60v" path="res://scripts/player/idle.gd" id="9_q11wb"]
+[ext_resource type="Script" uid="uid://bj55bhnt1en7j" path="res://scripts/player/run.gd" id="10_rga7k"]
+[ext_resource type="Script" uid="uid://2cdwputh25uo" path="res://scripts/player/jump.gd" id="11_jl35c"]
+[ext_resource type="Script" uid="uid://dsaud53askrac" path="res://scripts/player/fall.gd" id="12_6i254"]
+[ext_resource type="Script" uid="uid://c6kknj688cb2d" path="res://scripts/player/weapon_component.gd" id="13_6i254"]
+[ext_resource type="Script" uid="uid://dkt2q0ew1idky" path="res://scripts/player/drive.gd" id="13_ablek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3brmp"]
 size = Vector2(16, 32.60871)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i254"]
+atlas = ExtResource("2_5t8ew")
+region = Rect2(1344, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ablek"]
+atlas = ExtResource("2_5t8ew")
+region = Rect2(1408, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdirc"]
+atlas = ExtResource("2_5t8ew")
+region = Rect2(1472, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bae4d"]
+atlas = ExtResource("2_5t8ew")
+region = Rect2(1536, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol6b3"]
+atlas = ExtResource("2_5t8ew")
+region = Rect2(1600, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juy5b"]
+atlas = ExtResource("2_5t8ew")
+region = Rect2(1664, 0, 64, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n5he"]
 atlas = ExtResource("2_5t8ew")
@@ -42,30 +73,6 @@ region = Rect2(384, 0, 64, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jl35c"]
 atlas = ExtResource("2_5t8ew")
 region = Rect2(448, 0, 64, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6i254"]
-atlas = ExtResource("2_5t8ew")
-region = Rect2(1344, 0, 64, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ablek"]
-atlas = ExtResource("2_5t8ew")
-region = Rect2(1408, 0, 64, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rdirc"]
-atlas = ExtResource("2_5t8ew")
-region = Rect2(1472, 0, 64, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bae4d"]
-atlas = ExtResource("2_5t8ew")
-region = Rect2(1536, 0, 64, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ol6b3"]
-atlas = ExtResource("2_5t8ew")
-region = Rect2(1600, 0, 64, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_juy5b"]
-atlas = ExtResource("2_5t8ew")
-region = Rect2(1664, 0, 64, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dx2h4"]
 atlas = ExtResource("2_5t8ew")
@@ -107,6 +114,29 @@ region = Rect2(832, 0, 64, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6i254")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ablek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdirc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bae4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol6b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juy5b")
+}],
+"loop": 0,
+"name": &"FALL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4n5he")
 }, {
 "duration": 1.0,
@@ -131,30 +161,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jl35c")
 }],
 "loop": 1,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6i254")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ablek")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rdirc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bae4d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ol6b3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_juy5b")
-}],
-"loop": 1,
-"name": &"fall",
+"name": &"IDLE",
 "speed": 5.0
 }, {
 "frames": [{
@@ -167,8 +174,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pmujj")
 }],
-"loop": 1,
-"name": &"jump",
+"loop": 0,
+"name": &"JUMP",
 "speed": 5.0
 }, {
 "frames": [{
@@ -191,7 +198,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_lasw5")
 }],
 "loop": 1,
-"name": &"run",
+"name": &"RUN",
 "speed": 5.0
 }]
 
@@ -233,6 +240,7 @@ size = Vector2(17.999998, 30)
 [node name="player" type="CharacterBody2D" unique_id=735416826 groups=["player"]]
 scale = Vector2(2, 2)
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_i8vih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1525362219]
@@ -242,13 +250,9 @@ shape = SubResource("RectangleShape2D_3brmp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605574474]
 sprite_frames = SubResource("SpriteFrames_ga66r")
-animation = &"Idle"
-autoplay = "Idle"
+animation = &"FALL"
+autoplay = "IDLE"
 speed_scale = 2.0
-
-[node name="Coyotetime" type="Timer" parent="." unique_id=719879834]
-wait_time = 0.15
-one_shot = true
 
 [node name="GestorVidaComponent" parent="." unique_id=673144079 node_paths=PackedStringArray("NodoPadre") instance=ExtResource("3_5t8ew")]
 NodoPadre = NodePath("..")
@@ -285,6 +289,27 @@ position = Vector2(130.70007, -49.92026)
 scale = Vector2(6.060606, 0.94339633)
 shape = SubResource("RectangleShape2D_mrjva")
 disabled = true
+
+[node name="StateMachine" parent="." unique_id=1044888700 node_paths=PackedStringArray("default_state") instance=ExtResource("8_k0adn")]
+default_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="StateMachine" unique_id=1846315275]
+script = ExtResource("9_q11wb")
+
+[node name="RUN" type="Node" parent="StateMachine" unique_id=1313376602]
+script = ExtResource("10_rga7k")
+
+[node name="JUMP" type="Node" parent="StateMachine" unique_id=494694068]
+script = ExtResource("11_jl35c")
+
+[node name="FALL" type="Node" parent="StateMachine" unique_id=376234442]
+script = ExtResource("12_6i254")
+
+[node name="DRIVE" type="Node" parent="StateMachine" unique_id=565444269]
+script = ExtResource("13_ablek")
+
+[node name="weapon_component" type="Node" parent="." unique_id=310659926]
+script = ExtResource("13_6i254")
 
 [connection signal="On_Entity_Die" from="GestorVidaComponent" to="." method="_on_gestor_vida_component_on_entity_die"]
 [connection signal="body_entered" from="melee_attack" to="melee_attack" method="_on_body_entered"]

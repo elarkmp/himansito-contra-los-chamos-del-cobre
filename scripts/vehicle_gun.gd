@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		if _cooldown <= 0.0:
 			_canShoot = true
 			
-	if vehicle_base.driving:
+	if vehicle_base.DRIVING:
 		if moving:
 			if Input.is_action_pressed("left"):
 				moving = false

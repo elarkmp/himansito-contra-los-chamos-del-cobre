@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://r4ry57pves76" path="res://icon.svg" id="5_7ougk"]
 [ext_resource type="Script" uid="uid://dlw5xmlsjndjw" path="res://scripts/vehicle_gun.gd" id="5_bc83w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r5yk6"]
-atlas = ExtResource("1_xpf7o")
-region = Rect2(0, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvqa8"]
 atlas = ExtResource("1_xpf7o")
 region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5yk6"]
+atlas = ExtResource("1_xpf7o")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jptw4"]
 atlas = ExtResource("1_xpf7o")
@@ -27,18 +27,18 @@ region = Rect2(64, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r5yk6")
+"texture": SubResource("AtlasTexture_nvqa8")
 }],
 "loop": 1,
-"name": &"Idle",
+"name": &"FALL",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nvqa8")
+"texture": SubResource("AtlasTexture_r5yk6")
 }],
 "loop": 1,
-"name": &"fall",
+"name": &"IDLE",
 "speed": 5.0
 }, {
 "frames": [{
@@ -46,7 +46,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jptw4")
 }],
 "loop": 1,
-"name": &"jump",
+"name": &"JUMP",
 "speed": 5.0
 }, {
 "frames": [{
@@ -54,34 +54,28 @@ animations = [{
 "texture": SubResource("AtlasTexture_7ougk")
 }],
 "loop": 1,
-"name": &"run",
+"name": &"RUN",
 "speed": 5.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ygtyv"]
-radius = 32.06244
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvqa8"]
 size = Vector2(90, 71)
 
-[node name="VehicleBase" type="CharacterBody2D" unique_id=97130481]
-collision_layer = 0
+[node name="VehicleBase" type="Node2D" unique_id=1551281073]
 script = ExtResource("1_nvqa8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=315719430]
+[node name="animaciones" type="AnimatedSprite2D" parent="." unique_id=315719430]
 sprite_frames = SubResource("SpriteFrames_ga66r")
-animation = &"Idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1282604113]
-shape = SubResource("CircleShape2D_ygtyv")
+animation = &"RUN"
 
 [node name="GestorVidaComponent" parent="." unique_id=673144079 instance=ExtResource("2_nvqa8")]
 tipo = 0
 
-[node name="Entered_area" type="Area2D" parent="." unique_id=1816615790]
+[node name="Entered_area" type="Area2D" parent="." unique_id=1816615790 node_paths=PackedStringArray("vehicle_base")]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_jptw4")
+vehicle_base = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entered_area" unique_id=873599418]
 position = Vector2(1, -3.5)

@@ -1,17 +1,36 @@
 [gd_scene format=3 uid="uid://c6b0dybh0i0si"]
 
 [ext_resource type="PackedScene" uid="uid://btyryn33napc3" path="res://Escenas/Entidades/vehicle_base.tscn" id="1_brhaf"]
-[ext_resource type="PackedScene" uid="uid://c7nsauy0vmgh3" path="res://Escenas/Entidades/Fly.tscn" id="2_bwqoy"]
-[ext_resource type="PackedScene" uid="uid://c8mjqg8354dwo" path="res://Escenas/Componentes/distance_camera_component.tscn" id="3_bwqoy"]
+[ext_resource type="PackedScene" uid="uid://b5164o04t0ekn" path="res://Escenas/Componentes/state_machine.tscn" id="2_brhaf"]
+[ext_resource type="Script" uid="uid://djog76mq3qja1" path="res://scripts/vehicles/sleep.gd" id="3_ickcg"]
+[ext_resource type="Script" uid="uid://cvbt3isi4k630" path="res://scripts/vehicles/fly.gd" id="4_ickcg"]
+[ext_resource type="Script" uid="uid://5h0gws2h7nnm" path="res://scripts/vehicles/fall.gd" id="5_rgkt3"]
 
-[node name="helicoptero" unique_id=97130481 instance=ExtResource("1_brhaf")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ga66r"]
+radius = 32.0
 
-[node name="vehicle_gun" parent="." index="4" unique_id=1334638946]
+[node name="Helicoptero" type="CharacterBody2D" unique_id=73950425]
+collision_layer = 0
+
+[node name="VehicleBase" parent="." unique_id=1551281073 instance=ExtResource("1_brhaf")]
+
+[node name="vehicle_gun" parent="VehicleBase" index="3" unique_id=1334638946]
 max_direction_left = -210.0
 max_direction_right = 45.0
 
-[node name="Fly" parent="." index="5" unique_id=1950683898 node_paths=PackedStringArray("vehicle_base") instance=ExtResource("2_bwqoy")]
-vehicle_base = NodePath("..")
+[node name="StateMachine" parent="." unique_id=1044888700 node_paths=PackedStringArray("default_state") instance=ExtResource("2_brhaf")]
+default_state = NodePath("SLEEP")
 
-[node name="distance_camera_component" parent="." index="6" unique_id=1622920477 node_paths=PackedStringArray("vehicle_base") instance=ExtResource("3_bwqoy")]
-vehicle_base = NodePath("..")
+[node name="SLEEP" type="Node" parent="StateMachine" unique_id=1303253910]
+script = ExtResource("3_ickcg")
+
+[node name="IDLE" type="Node" parent="StateMachine" unique_id=1758241035]
+script = ExtResource("4_ickcg")
+
+[node name="FALL" type="Node" parent="StateMachine" unique_id=1382371327]
+script = ExtResource("5_rgkt3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=637915572]
+shape = SubResource("CircleShape2D_ga66r")
+
+[editable path="VehicleBase"]
