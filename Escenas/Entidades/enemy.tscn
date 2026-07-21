@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://di0yrdml8aej1"]
 
 [ext_resource type="Script" uid="uid://dw06vfso2rynd" path="res://scripts/MovimientoBase.gd" id="1_08qbq"]
-[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="2_njg85"]
+[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/temp/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="2_njg85"]
 [ext_resource type="PackedScene" uid="uid://b1s4sotjhpd5f" path="res://Escenas/Componentes/gestor_vida_component.tscn" id="3_eowqu"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kkljt"]
 radius = 28.0

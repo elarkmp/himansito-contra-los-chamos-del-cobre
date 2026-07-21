@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://b0cfuhhwnh8xb"]
 
 [ext_resource type="Texture2D" uid="uid://d0xefs75cpwrh" path="res://sprites/player/Sprite-0001.png" id="1_pa3li"]
-[ext_resource type="Texture2D" uid="uid://c2cvc6iwmsfbr" path="res://sprites/oh no.png" id="1_qyryc"]
-[ext_resource type="Texture2D" uid="uid://vnmesmdo3mpx" path="res://sprites/flipape.png" id="2_7nbt3"]
+[ext_resource type="Texture2D" uid="uid://c2cvc6iwmsfbr" path="res://sprites/temp/oh no.png" id="1_qyryc"]
+[ext_resource type="Texture2D" uid="uid://vnmesmdo3mpx" path="res://sprites/temp/flipape.png" id="2_7nbt3"]
 [ext_resource type="Texture2D" uid="uid://r4ry57pves76" path="res://icon.svg" id="2_qubbu"]
 [ext_resource type="Script" uid="uid://cx37cuc5ddifq" path="res://scripts/STATE MACHINE/state_machine.gd" id="3_bvkta"]
-[ext_resource type="Texture2D" uid="uid://dufeyrtne3xgu" path="res://sprites/no hace nada.png" id="3_tnk1g"]
+[ext_resource type="Texture2D" uid="uid://dufeyrtne3xgu" path="res://sprites/temp/no hace nada.png" id="3_tnk1g"]
 [ext_resource type="Script" uid="uid://bj8nctb3r53an" path="res://scripts/boss/elrayador/boss_state_idle.gd" id="4_nogmg"]
 [ext_resource type="Script" uid="uid://bce66bmiij35f" path="res://scripts/boss/elrayador/boss_state_blue_light.gd" id="5_ovhsa"]
 [ext_resource type="Script" uid="uid://cq61mp86yumia" path="res://scripts/boss/elrayador/boss_state_yellow_light.gd" id="6_pmcy2"]
@@ -149,21 +149,21 @@ shape = SubResource("RectangleShape2D_ga66r")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1379901916 node_paths=PackedStringArray("default_state")]
 script = ExtResource("3_bvkta")
-default_state = NodePath("BossStateSleep")
+default_state = NodePath("SLEEP")
 
-[node name="BossStateIdle" type="Node" parent="StateMachine" unique_id=1076081164]
+[node name="IDLE" type="Node" parent="StateMachine" unique_id=1076081164]
 script = ExtResource("4_nogmg")
 
-[node name="BossStateBlueLight" type="Node" parent="StateMachine" unique_id=876251174]
+[node name="BLUELIGHT" type="Node" parent="StateMachine" unique_id=876251174]
 script = ExtResource("5_ovhsa")
 
-[node name="BossStateYellowLight" type="Node" parent="StateMachine" unique_id=188765188]
+[node name="YELLOWLIGHT" type="Node" parent="StateMachine" unique_id=188765188]
 script = ExtResource("6_pmcy2")
 
-[node name="BossStateSleep" type="Node" parent="StateMachine" unique_id=1690526544]
+[node name="SLEEP" type="Node" parent="StateMachine" unique_id=1690526544]
 script = ExtResource("6_vfa7r")
 
-[node name="BossStateAlert" type="Node" parent="StateMachine" unique_id=121476659]
+[node name="ALERT" type="Node" parent="StateMachine" unique_id=121476659]
 script = ExtResource("7_8sb2o")
 
 [node name="blue_light" type="AnimatedSprite2D" parent="." unique_id=924914102]
@@ -175,7 +175,7 @@ animation = &"lighting"
 
 [node name="DamageComponent" parent="blue_light" unique_id=1534548471 instance=ExtResource("7_5cjpd")]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 10
 damageTipe = 0
 damage = 2
 
@@ -194,7 +194,7 @@ animation = &"lighting"
 
 [node name="DamageComponent" parent="yellow_light" unique_id=1975525430 instance=ExtResource("7_5cjpd")]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 10
 damageTipe = 0
 damage = 2
 
@@ -210,10 +210,10 @@ tipo = 1
 
 [node name="detector_area" type="Area2D" parent="." unique_id=734027028]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detector_area" unique_id=721752618]
 position = Vector2(-16, -21)
 shape = SubResource("RectangleShape2D_vfa7r")
 
-[connection signal="body_entered" from="detector_area" to="StateMachine/BossStateSleep" method="_on_detector_area_body_entered"]
+[connection signal="body_entered" from="detector_area" to="StateMachine/SLEEP" method="_on_detector_area_body_entered"]

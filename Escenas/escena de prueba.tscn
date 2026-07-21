@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bbbepnweygx8a" path="res://Escenas/Entidades/player.tscn" id="2_ur31k"]
 [ext_resource type="PackedScene" uid="uid://2xv87iorg63g" path="res://Escenas/Componentes/damage_component.tscn" id="2_vd7g1"]
 [ext_resource type="Script" uid="uid://dw06vfso2rynd" path="res://scripts/MovimientoBase.gd" id="5_uto06"]
-[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="6_ygtyv"]
+[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/temp/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="6_ygtyv"]
 [ext_resource type="PackedScene" uid="uid://cynhkwkhofa67" path="res://Escenas/Entidades/tanque.tscn" id="8_ygtyv"]
 [ext_resource type="PackedScene" uid="uid://c6b0dybh0i0si" path="res://Escenas/Entidades/helicoptero.tscn" id="9_qo1ux"]
 [ext_resource type="PackedScene" uid="uid://ckhtarujxfe80" path="res://Escenas/GameManager.tscn" id="10_1x56r"]
@@ -196,11 +196,6 @@ shape = SubResource("CapsuleShape2D_kkljt")
 position = Vector2(99, 291)
 metadata/_edit_group_ = true
 
-[node name="tanque" parent="." unique_id=97130481 instance=ExtResource("8_ygtyv")]
-position = Vector2(1717.0001, 212)
-scale = Vector2(3, 3)
-collision_layer = 0
-
 [node name="Label" type="Label" parent="." unique_id=1405079659]
 offset_left = 1997.0
 offset_top = 126.0
@@ -221,6 +216,10 @@ target = NodePath("../player")
 
 [node name="Helicoptero" parent="." unique_id=73950425 instance=ExtResource("9_qo1ux")]
 position = Vector2(2438, 213)
+scale = Vector2(3, 3)
+
+[node name="Tanque" parent="." unique_id=1753460899 instance=ExtResource("8_ygtyv")]
+position = Vector2(1767, 223)
 scale = Vector2(3, 3)
 
 [connection signal="On_Entity_Die" from="cajas/enemigo 1/GestorVidaComponent" to="cajas/enemigo 1" method="_on_gestor_vida_component_on_entity_die"]

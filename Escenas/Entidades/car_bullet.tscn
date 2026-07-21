@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c7ei6pc07q8ig"]
 
 [ext_resource type="Script" uid="uid://be65r2yvudcn1" path="res://scripts/car_bullet.gd" id="1_eoqwo"]
-[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="2_no122"]
+[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/temp/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="2_no122"]
 [ext_resource type="Resource" uid="uid://fnbhqqpgr1bt" path="res://resources/balas/normal_bullet.tres" id="2_poqp2"]
 [ext_resource type="PackedScene" uid="uid://2xv87iorg63g" path="res://Escenas/Componentes/damage_component.tscn" id="3_poqp2"]
 [ext_resource type="Script" uid="uid://ck63sq6wba3rv" path="res://scripts/explode.gd" id="5_poqp2"]

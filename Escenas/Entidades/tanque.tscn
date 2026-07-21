@@ -7,16 +7,19 @@
 [ext_resource type="Script" uid="uid://bywbnemawc6ow" path="res://scripts/vehicles/run.gd" id="5_w1a37"]
 [ext_resource type="Script" uid="uid://cee2jgwpnog8n" path="res://scripts/vehicles/jump.gd" id="6_dbmmr"]
 [ext_resource type="Script" uid="uid://djog76mq3qja1" path="res://scripts/vehicles/sleep.gd" id="7_sbuys"]
+[ext_resource type="Script" uid="uid://biu5gm6rbngcc" path="res://scripts/vehicles/explode.gd" id="8_nyu2k"]
+[ext_resource type="PackedScene" uid="uid://b1s4sotjhpd5f" path="res://Escenas/Componentes/gestor_vida_component.tscn" id="9_03nnv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mrjva"]
 radius = 32.01562
 
 [node name="Tanque" type="CharacterBody2D" unique_id=1753460899]
+collision_layer = 8
 
 [node name="VehicleBase" parent="." unique_id=1551281073 instance=ExtResource("1_e75qq")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=890629810]
-shape = SubResource("CircleShape2D_mrjva")
+[node name="animaciones" parent="VehicleBase" index="0" unique_id=315719430]
+animation = &"IDLE"
 
 [node name="StateMachine" parent="." unique_id=1044888700 node_paths=PackedStringArray("default_state") instance=ExtResource("2_edpxq")]
 default_state = NodePath("IDLE")
@@ -35,5 +38,19 @@ script = ExtResource("6_dbmmr")
 
 [node name="SLEEP" type="Node" parent="StateMachine" unique_id=796503726]
 script = ExtResource("7_sbuys")
+
+[node name="EXPLODE" type="Node" parent="StateMachine" unique_id=92813818]
+script = ExtResource("8_nyu2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=890629810]
+shape = SubResource("CircleShape2D_mrjva")
+
+[node name="GestorVidaComponent" parent="." unique_id=673144079 node_paths=PackedStringArray("NodoPadre") instance=ExtResource("9_03nnv")]
+NodoPadre = NodePath("..")
+vida = 1
+tipo = 0
+
+[connection signal="animation_finished" from="VehicleBase/animaciones" to="StateMachine/EXPLODE" method="_on_animaciones_animation_finished"]
+[connection signal="On_Entity_Die" from="GestorVidaComponent" to="VehicleBase" method="_on_gestor_vida_component_on_entity_die"]
 
 [editable path="VehicleBase"]

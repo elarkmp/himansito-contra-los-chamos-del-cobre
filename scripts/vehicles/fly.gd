@@ -52,6 +52,3 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left"):
 		tween = create_tween()
 		tween.tween_property(animaciones, "rotation_degrees", -10.0, 0.5 )
-	if Input.is_action_just_pressed("left") and Input.is_action_just_pressed("right"):
-		tween = create_tween()
-		tween.tween_property(animaciones, "rotation_degrees", 0.0, 0.2 )

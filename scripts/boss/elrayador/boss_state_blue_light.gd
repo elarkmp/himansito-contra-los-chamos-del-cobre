@@ -6,7 +6,6 @@ extends StateBase
 
 
 func _start():
-	print("blue")
 	animated_sprite_2d.play("BLUE_LIGHT")
 	await get_tree().create_timer(1.2).timeout
 	collision_shape_2d.disabled = false
@@ -15,4 +14,4 @@ func _start():
 	await get_tree().create_timer(0.2).timeout
 	collision_shape_2d.disabled = true
 	blue_light.hide()
-	state_machine._change_to("BossStateIdle")
+	state_machine._change_to("IDLE")

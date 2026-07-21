@@ -2,10 +2,34 @@
 
 [ext_resource type="Script" uid="uid://growmsysl5es" path="res://scripts/vehicle_base.gd" id="1_nvqa8"]
 [ext_resource type="Texture2D" uid="uid://d0xefs75cpwrh" path="res://sprites/player/Sprite-0001.png" id="1_xpf7o"]
-[ext_resource type="PackedScene" uid="uid://b1s4sotjhpd5f" path="res://Escenas/Componentes/gestor_vida_component.tscn" id="2_nvqa8"]
+[ext_resource type="Texture2D" uid="uid://c4rxaq8fbx4me" path="res://sprites/temp/explotion.png" id="2_ui32m"]
 [ext_resource type="Script" uid="uid://dm63cpyepn6ri" path="res://scripts/entered_area.gd" id="4_jptw4"]
 [ext_resource type="Texture2D" uid="uid://r4ry57pves76" path="res://icon.svg" id="5_7ougk"]
 [ext_resource type="Script" uid="uid://dlw5xmlsjndjw" path="res://scripts/vehicle_gun.gd" id="5_bc83w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xojrd"]
+atlas = ExtResource("2_ui32m")
+region = Rect2(0, 0, 74, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4je2"]
+atlas = ExtResource("2_ui32m")
+region = Rect2(74, 0, 74, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx327"]
+atlas = ExtResource("2_ui32m")
+region = Rect2(148, 0, 74, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y7f7"]
+atlas = ExtResource("2_ui32m")
+region = Rect2(222, 0, 74, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af7pj"]
+atlas = ExtResource("2_ui32m")
+region = Rect2(296, 0, 74, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdcvk"]
+atlas = ExtResource("2_ui32m")
+region = Rect2(370, 0, 74, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvqa8"]
 atlas = ExtResource("1_xpf7o")
@@ -25,6 +49,29 @@ region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ga66r"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xojrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4je2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx327")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y7f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af7pj")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_rdcvk")
+}],
+"loop": 0,
+"name": &"EXPLODE",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nvqa8")
@@ -66,10 +113,7 @@ script = ExtResource("1_nvqa8")
 
 [node name="animaciones" type="AnimatedSprite2D" parent="." unique_id=315719430]
 sprite_frames = SubResource("SpriteFrames_ga66r")
-animation = &"RUN"
-
-[node name="GestorVidaComponent" parent="." unique_id=673144079 instance=ExtResource("2_nvqa8")]
-tipo = 0
+animation = &"EXPLODE"
 
 [node name="Entered_area" type="Area2D" parent="." unique_id=1816615790 node_paths=PackedStringArray("vehicle_base")]
 collision_layer = 0

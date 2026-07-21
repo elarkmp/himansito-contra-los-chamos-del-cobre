@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dufeyrtne3xgu"
-path="res://.godot/imported/no hace nada.png-1000dc43d86aea3735c00303fb9e56c1.ctex"
+path="res://.godot/imported/no hace nada.png-2c5d1afcb4f87ea9302c9e9893bd8553.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/no hace nada.png"
-dest_files=["res://.godot/imported/no hace nada.png-1000dc43d86aea3735c00303fb9e56c1.ctex"]
+source_file="res://sprites/temp/no hace nada.png"
+dest_files=["res://.godot/imported/no hace nada.png-2c5d1afcb4f87ea9302c9e9893bd8553.ctex"]
 
 [params]
 

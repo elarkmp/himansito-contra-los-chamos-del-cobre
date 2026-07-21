@@ -28,8 +28,8 @@ func attack():
 		in_attack = false
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	in_melee_attack_area = true
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	in_melee_attack_area = false

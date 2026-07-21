@@ -39,19 +39,19 @@ func convertDirection(_direction: directionGun) -> Vector2:
 		## derecha
 		directionGun.right: 
 			vector = Vector2(1, 0)
-			print(str(vector))
+			#print(str(vector))
 		## izquierda
 		directionGun.left:
 			vector = Vector2(-1, 0)
-			print(str(vector))
+			#print(str(vector))
 		## arriba
 		directionGun.up:
 			vector = Vector2(0, -1)
-			print(str(vector))
+			#print(str(vector))
 		## abajo
 		directionGun.down:
 			vector = Vector2(0, 1)
-			print(str(vector))
+			#print(str(vector))
 		## default
 		_: 
 			vector = Vector2(0, 0)
@@ -64,7 +64,7 @@ func getDirection() -> directionGun:
 ## disparo
 func shoot() -> bool:
 	if not _canShoot:
-		print("no se puede")
+		#print("no se puede")
 		return false
 	
 	_canShoot = false

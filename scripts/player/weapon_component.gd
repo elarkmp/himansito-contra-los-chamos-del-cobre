@@ -6,8 +6,8 @@ var agachado: bool = false
 var lastDirection: GunBase.directionGun = arma.directionGun.right
 
 
-func _physics_process(delta: float) -> void:
-	if player.driving: return
+func _physics_process(_delta: float) -> void:
+	if !player.can_move: return
 	var input_axis = Input.get_axis("left", "right")
 	weapon(input_axis)
 	animWeapon(input_axis)

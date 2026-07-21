@@ -5,12 +5,11 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	
-	print("Cuerpo Detectado")
+	#print("Cuerpo Detectado")
 	
 	if body.has_node("GestorVidaComponent"):
 		
 		var gestorvida = body.get_node("GestorVidaComponent")
 		if gestorvida.has_method("DamageEntity"):
 			gestorvida.DamageEntity(damage, damageTipe)
-
 	pass 

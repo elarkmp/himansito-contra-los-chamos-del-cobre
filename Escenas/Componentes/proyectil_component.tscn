@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://btd6vkxughnd0"]
 
 [ext_resource type="Script" uid="uid://didkw5psus5ea" path="res://scripts/Proyectil.gd" id="1_qdmoe"]
-[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="2_1vjgu"]
+[ext_resource type="Texture2D" uid="uid://dhqcojug5nml1" path="res://sprites/temp/00e0f771f5b84d5409ef8247a7a9177f.jpg" id="2_1vjgu"]
 [ext_resource type="Resource" uid="uid://fnbhqqpgr1bt" path="res://resources/balas/normal_bullet.tres" id="2_vajl1"]
 
 [node name="Proyectil_component" type="RigidBody2D" unique_id=1635148290]

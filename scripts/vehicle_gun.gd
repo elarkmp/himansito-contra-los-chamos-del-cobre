@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 
 func shoot() -> bool:
 	if not _canShoot:
-		print("no se puede")
+		#print("no se puede")
 		return false
 	
 	_canShoot = false

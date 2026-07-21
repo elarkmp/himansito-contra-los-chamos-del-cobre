@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://dsaud53askrac" path="res://scripts/player/fall.gd" id="12_6i254"]
 [ext_resource type="Script" uid="uid://c6kknj688cb2d" path="res://scripts/player/weapon_component.gd" id="13_6i254"]
 [ext_resource type="Script" uid="uid://dkt2q0ew1idky" path="res://scripts/player/drive.gd" id="13_ablek"]
+[ext_resource type="Script" uid="uid://c4m7v8xecbuu1" path="res://scripts/player/death.gd" id="14_rdirc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3brmp"]
 size = Vector2(16, 32.60871)
@@ -240,7 +241,6 @@ size = Vector2(17.999998, 30)
 [node name="player" type="CharacterBody2D" unique_id=735416826 groups=["player"]]
 scale = Vector2(2, 2)
 collision_layer = 2
-collision_mask = 9
 script = ExtResource("1_i8vih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1525362219]
@@ -307,6 +307,9 @@ script = ExtResource("12_6i254")
 
 [node name="DRIVE" type="Node" parent="StateMachine" unique_id=565444269]
 script = ExtResource("13_ablek")
+
+[node name="DEATH" type="Node" parent="StateMachine" unique_id=1962468568]
+script = ExtResource("14_rdirc")
 
 [node name="weapon_component" type="Node" parent="." unique_id=310659926]
 script = ExtResource("13_6i254")

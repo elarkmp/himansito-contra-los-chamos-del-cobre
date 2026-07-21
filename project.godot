@@ -66,6 +66,7 @@ interactuar={
 2d_physics/layer_1="mapa"
 2d_physics/layer_2="player_hurtbox"
 2d_physics/layer_3="enemy_hurtbox"
+2d_physics/layer_4="vehicle"
 
 [physics]
 

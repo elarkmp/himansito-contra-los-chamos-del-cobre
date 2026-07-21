@@ -16,7 +16,7 @@ enum TipoEntidad {jugador, enemigo, objeto}
 
 ## esto procesa la vida de todas las entidades 
 ## que tengan este componente y puedan morir
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	isDead()
 
 func DamageEntity(damage: int, damageTipe: TipoEntidad) -> void:

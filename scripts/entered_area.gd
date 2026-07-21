@@ -20,3 +20,7 @@ func _input(_event: InputEvent) -> void:
 		if Input.is_action_just_pressed("interactuar"):
 			vehicle_base.exit_vehicle()
 			body_player.drive(false)
+
+func _process(_delta: float) -> void:
+	if vehicle_base.explotion:
+		body_player.drive(false)

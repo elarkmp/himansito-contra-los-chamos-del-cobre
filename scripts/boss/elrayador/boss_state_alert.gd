@@ -8,5 +8,5 @@ func _start():
 	TextoEnPantalla.text_center("EL RAYADOR", 1)
 	TextoEnPantalla.text_down("(tira rayos)", 1)
 	await get_tree().create_timer(1).timeout
-	state_machine._change_to("BossStateIdle")
+	state_machine._change_to("IDLE")
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2cvc6iwmsfbr"
-path="res://.godot/imported/oh no.png-3b02030bff21d1b142f22025e46622f0.ctex"
+uid="uid://vnmesmdo3mpx"
+path="res://.godot/imported/flipape.png-f9a4bdb1dcd407124fc4510a33cf4901.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/oh no.png"
-dest_files=["res://.godot/imported/oh no.png-3b02030bff21d1b142f22025e46622f0.ctex"]
+source_file="res://sprites/temp/flipape.png"
+dest_files=["res://.godot/imported/flipape.png-f9a4bdb1dcd407124fc4510a33cf4901.ctex"]
 
 [params]
 
