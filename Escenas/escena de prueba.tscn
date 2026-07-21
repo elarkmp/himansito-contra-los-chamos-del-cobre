@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cynhkwkhofa67" path="res://Escenas/Entidades/tanque.tscn" id="8_ygtyv"]
 [ext_resource type="PackedScene" uid="uid://c6b0dybh0i0si" path="res://Escenas/Entidades/helicoptero.tscn" id="9_qo1ux"]
 [ext_resource type="PackedScene" uid="uid://ckhtarujxfe80" path="res://Escenas/GameManager.tscn" id="10_1x56r"]
-[ext_resource type="PackedScene" uid="uid://b0cfuhhwnh8xb" path="res://Escenas/Entidades/Bosses/elrayador.tscn" id="11_v6g4o"]
+[ext_resource type="PackedScene" uid="uid://b0cfuhhwnh8xb" path="res://Escenas/Entidades/Bosses/CLOVER.tscn" id="11_v6g4o"]
 [ext_resource type="PackedScene" uid="uid://dp36x6ujwwfqm" path="res://Escenas/camera_2d.tscn" id="12_lbo0v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkljt"]
@@ -208,8 +208,8 @@ autowrap_mode = 3
 [node name="GameManager" parent="." unique_id=153092961 instance=ExtResource("10_1x56r")]
 
 [node name="Boss_base" parent="." unique_id=811155915 instance=ExtResource("11_v6g4o")]
-position = Vector2(4313.0005, 387.00003)
-scale = Vector2(5, 5)
+position = Vector2(4313, 354.00003)
+scale = Vector2(6, 6)
 
 [node name="Camera2D" parent="." unique_id=77195339 node_paths=PackedStringArray("target") instance=ExtResource("12_lbo0v")]
 target = NodePath("../player")
