@@ -113,7 +113,7 @@ script = ExtResource("1_nvqa8")
 
 [node name="animaciones" type="AnimatedSprite2D" parent="." unique_id=315719430]
 sprite_frames = SubResource("SpriteFrames_ga66r")
-animation = &"EXPLODE"
+animation = &"IDLE"
 
 [node name="Entered_area" type="Area2D" parent="." unique_id=1816615790 node_paths=PackedStringArray("vehicle_base")]
 collision_layer = 0
@@ -127,9 +127,10 @@ shape = SubResource("RectangleShape2D_nvqa8")
 
 [node name="vehicle_gun" type="Node2D" parent="." unique_id=1334638946]
 position = Vector2(0, 11)
+rotation = 6.2831855
 script = ExtResource("5_bc83w")
 
-[node name="Sprite2D" type="Sprite2D" parent="vehicle_gun" unique_id=1904955341]
+[node name="cannon" type="Sprite2D" parent="vehicle_gun" unique_id=1904955341]
 position = Vector2(17, 0)
 scale = Vector2(0.34375, 0.109375)
 texture = ExtResource("5_7ougk")
@@ -137,10 +138,5 @@ texture = ExtResource("5_7ougk")
 [node name="Marker2D" type="Marker2D" parent="vehicle_gun" unique_id=826928766]
 position = Vector2(40, 0)
 
-[node name="Timer" type="Timer" parent="vehicle_gun" unique_id=2019485580]
-wait_time = 0.015
-one_shot = true
-
 [connection signal="body_entered" from="Entered_area" to="Entered_area" method="_on_body_entered"]
 [connection signal="body_exited" from="Entered_area" to="Entered_area" method="_on_body_exited"]
-[connection signal="timeout" from="vehicle_gun/Timer" to="vehicle_gun" method="_on_timer_timeout"]
